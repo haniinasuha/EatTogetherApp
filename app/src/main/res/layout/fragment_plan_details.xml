@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_planDetails"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PlanDetailsFragment">
+
+    <LinearLayout
+        android:layout_width="415dp"
+        android:layout_height="641dp"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txt_mealType"
+            android:layout_width="104dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="334dp"
+            android:paddingTop="20dp"
+            android:text="Meal Type:"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/txtView_mealType"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="20dp"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/txt_location"
+            android:layout_width="97dp"
+            android:layout_height="54dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="310dp"
+            android:paddingTop="20dp"
+            android:text="Location:"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/txtView_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="20dp"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/txt_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="13dp"
+            android:paddingTop="50dp"
+            android:text="Time/Date:"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/txtView_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="20dp"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/txtView_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="20dp"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/txt_maxSpot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:layout_marginEnd="16dp"
+            android:paddingTop="40dp"
+            android:text="Maximum Spot:"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/txtView_maxSpot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="20dp"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/txt_desc"
+            android:layout_width="114dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="322dp"
+            android:paddingTop="30dp"
+            android:paddingBottom="20dp"
+            android:text="Description:"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/txtView_desc"
+            android:layout_width="68dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="35dp"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+</FrameLayout>
