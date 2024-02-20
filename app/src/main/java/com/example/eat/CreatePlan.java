@@ -1,14 +1,82 @@
 package com.example.eat;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Log;
+import android.view.View;
+import android.widget.RadioButton;
+import android.widget.TextView;
+import android.widget.Button;
+
+import com.google.android.material.textfield.TextInputEditText;
 
 public class CreatePlan extends AppCompatActivity {
-
+    private static final String TAG = "CreatePlan";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create);
+        setContentView(R.layout.activity_create_plan);
+        Log.d(TAG, "onCreate");
+        getInput();
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d(TAG, "onStart");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d(TAG, "onResume");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(TAG, "onResume");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(TAG, "onPause");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(TAG, "onStop");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "onDestroy");
+    }
+
+    public void passData(TextInputEditText text, RadioButton btn) {
+
+        Bundle bundle_desc = new Bundle();
+        bundle_desc.putString("desc", text.getText().toString());
+        bundle_desc.putString("mealType", btn.getText().toString());
+
+        Fragment fragmentPlanDetails = new PlanDetailsFragment();
+        fragmentPlanDetails.setArguments(bundle_desc);
+
+        this.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_createPlan, fragmentPlanDetails).commit();
+    }
+
+    public void getInput() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.fragment_createPlan, CreatePlanFragment.class, null)
+                .commit();
     }
 }
