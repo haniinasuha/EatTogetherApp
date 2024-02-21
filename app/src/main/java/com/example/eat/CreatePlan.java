@@ -2,15 +2,11 @@ package com.example.eat;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.util.Log;
-import android.view.View;
+import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.TextView;
-import android.widget.Button;
 
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -21,7 +17,6 @@ public class CreatePlan extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_plan);
         Log.d(TAG, "onCreate");
-        getInput();
 
     }
 
@@ -61,11 +56,15 @@ public class CreatePlan extends AppCompatActivity {
         Log.d(TAG, "onDestroy");
     }
 
-    public void passData(TextInputEditText text, RadioButton btn) {
+    public void passData(TextInputEditText text, RadioButton btn, EditText date, EditText time, EditText spot) {
 
         Bundle bundle_desc = new Bundle();
         bundle_desc.putString("desc", text.getText().toString());
         bundle_desc.putString("mealType", btn.getText().toString());
+        bundle_desc.putString("date", date.getText().toString());
+        bundle_desc.putString("time", time.getText().toString());
+        bundle_desc.putString("maxSpots", spot.getText().toString());
+
 
         Fragment fragmentPlanDetails = new PlanDetailsFragment();
         fragmentPlanDetails.setArguments(bundle_desc);
@@ -73,10 +72,4 @@ public class CreatePlan extends AppCompatActivity {
         this.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_createPlan, fragmentPlanDetails).commit();
     }
 
-    public void getInput() {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.fragment_createPlan, CreatePlanFragment.class, null)
-                .commit();
-    }
 }

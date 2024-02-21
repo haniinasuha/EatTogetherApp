@@ -8,7 +8,7 @@
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
         android:id="@+id/linear_layout"
-        android:layout_width="415dp"
+        android:layout_width="wrap_content"
         android:layout_height="641dp"
         android:layout_marginTop="10dp"
         android:orientation="vertical">
@@ -20,42 +20,36 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="334dp"
             android:paddingTop="20dp"
-            android:text="Meal Type:"
-            android:textStyle="bold"
-            android:textSize="16sp" />
+            android:text="@string/meal_type"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
-        <LinearLayout
-            android:layout_width="407dp"
-            android:layout_height="55dp"
-            android:layout_marginStart="16dp"
+        <RadioGroup
+            android:id="@+id/radio_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
             android:orientation="horizontal">
 
-            <RadioGroup
-                android:id="@+id/radio_group"
-                android:layout_width="match_parent"
+            <RadioButton
+                android:id="@+id/btn_createBreakfast"
+                android:layout_width="130dp"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:text="@string/breakfast" />
 
-                <RadioButton
-                    android:id="@+id/btn_createBreakfast"
-                    android:layout_width="130dp"
-                    android:layout_height="match_parent"
-                    android:text="@string/breakfast" />
+            <RadioButton
+                android:id="@+id/btn_createLunch"
+                android:layout_width="130dp"
+                android:layout_height="match_parent"
+                android:text="@string/lunch" />
 
-                <RadioButton
-                    android:id="@+id/btn_createLunch"
-                    android:layout_width="130dp"
-                    android:layout_height="match_parent"
-                    android:text="@string/lunch" />
+            <RadioButton
+                android:id="@+id/btn_createDinner"
+                android:layout_width="130dp"
+                android:layout_height="match_parent"
+                android:text="@string/dinner" />
 
-                <RadioButton
-                    android:id="@+id/btn_createDinner"
-                    android:layout_width="130dp"
-                    android:layout_height="match_parent"
-                    android:text="@string/dinner" />
-
-            </RadioGroup>
-        </LinearLayout>
+        </RadioGroup>
 
         <TextView
             android:id="@+id/txt_location"
@@ -64,9 +58,9 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="310dp"
             android:paddingTop="20dp"
-            android:text="Location:"
-            android:textStyle="bold"
-            android:textSize="16sp" />
+            android:text="@string/location"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <Spinner
             android:id="@+id/spinner"
@@ -75,7 +69,7 @@
             android:layout_marginStart="20dp" />
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
@@ -86,9 +80,9 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="13dp"
                 android:paddingTop="20dp"
-                android:text="Date:"
-                android:textStyle="bold"
-                android:textSize="16sp" />
+                android:text="@string/date"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/txt_time"
@@ -97,9 +91,9 @@
                 android:layout_marginStart="120dp"
                 android:layout_marginEnd="13dp"
                 android:paddingTop="20dp"
-                android:text="Time:"
-                android:textStyle="bold"
-                android:textSize="16sp" />
+                android:text="@string/time"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
@@ -123,12 +117,12 @@
                 android:layout_height="48dp"
                 android:layout_marginStart="16dp"
                 android:ems="10"
-                android:hint="00:00"
+                android:hint="@string/_00_00"
                 android:inputType="time" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="78dp"
             android:orientation="horizontal">
 
@@ -139,15 +133,17 @@
                 android:layout_marginStart="17dp"
                 android:layout_marginEnd="16dp"
                 android:paddingTop="40dp"
-                android:text="Maximum Spot:"
-                android:textStyle="bold"
-                android:textSize="16sp" />
+                android:text="@string/maximum_spot"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/editTextNumber"
                 android:layout_width="209dp"
-                android:layout_height="wrap_content"
-                android:ems="3"
+                android:layout_height="48dp"
+                android:ems="2"
+                android:hint="@string/_1"
+                android:importantForAutofill="no"
                 android:inputType="number" />
         </LinearLayout>
 
@@ -159,9 +155,9 @@
             android:layout_marginEnd="322dp"
             android:paddingTop="30dp"
             android:paddingBottom="20dp"
-            android:text="Description:"
-            android:textStyle="bold"
-            android:textSize="16sp" />
+            android:text="@string/description"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout"
@@ -175,7 +171,7 @@
                 android:id="@+id/txtInput_desc"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="Description" />
+                android:hint="@string/description" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
@@ -185,7 +181,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="30dp"
             android:backgroundTint="#820505"
-            android:text="Create" />
+            android:text="@string/create" />
     </LinearLayout>
 
 </FrameLayout>

@@ -19,7 +19,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="334dp"
             android:paddingTop="20dp"
-            android:text="Meal Type:"
+            android:text="@string/meal_type"
             android:textSize="16sp" />
 
         <TextView
@@ -37,7 +37,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="310dp"
             android:paddingTop="20dp"
-            android:text="Location:"
+            android:text="@string/location"
             android:textSize="16sp" />
 
         <TextView
@@ -49,26 +49,36 @@
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/txt_time"
+            android:id="@+id/txt_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="13dp"
-            android:paddingTop="50dp"
-            android:text="Time/Date:"
+            android:paddingTop="10dp"
+            android:text="@string/date"
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/txtView_time"
-            android:layout_width="wrap_content"
+            android:id="@+id/txtView_date"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
             android:layout_marginTop="20dp"
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/txtView_date"
+            android:id="@+id/txt_time"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="13dp"
+            android:paddingTop="10dp"
+            android:text="@string/time"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/txtView_time"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
             android:layout_marginTop="20dp"
@@ -80,13 +90,13 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="17dp"
             android:layout_marginEnd="16dp"
-            android:paddingTop="40dp"
-            android:text="Maximum Spot:"
+            android:paddingTop="30dp"
+            android:text="@string/maximum_spot"
             android:textSize="16sp" />
 
         <TextView
             android:id="@+id/txtView_maxSpot"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
             android:layout_marginTop="20dp"
@@ -100,7 +110,7 @@
             android:layout_marginEnd="322dp"
             android:paddingTop="30dp"
             android:paddingBottom="20dp"
-            android:text="Description:"
+            android:text="@string/description"
             android:textSize="16sp" />
 
         <TextView

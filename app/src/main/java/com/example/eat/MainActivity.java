@@ -17,7 +17,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.d(TAG, "onCreate");
-        setFragment();
 
         Button btnBreakfast = findViewById(R.id.btn_breakfast);
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -112,10 +111,4 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(this, CreatePlan.class));
     }
 
-    public void setFragment() {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.fragment_activePlan, BreakfastFragment.class, null)
-                .commit();
-    }
 }

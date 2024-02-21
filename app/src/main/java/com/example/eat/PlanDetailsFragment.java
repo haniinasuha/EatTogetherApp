@@ -15,6 +15,10 @@ public class PlanDetailsFragment extends Fragment {
 
     TextView desc;
     TextView mealType;
+    TextView date;
+    TextView time;
+    TextView spot;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -28,6 +32,18 @@ public class PlanDetailsFragment extends Fragment {
         mealType = view.findViewById(R.id.txtView_mealType);
         String type = getArguments().getString("mealType");
         mealType.setText(type);
+
+        date = view.findViewById(R.id.txtView_date);
+        String dateText = getArguments().getString("date");
+        date.setText(dateText);
+
+        time = view.findViewById(R.id.txtView_time);
+        String timeText = getArguments().getString("time");
+        time.setText(timeText);
+
+        spot = view.findViewById(R.id.txtView_maxSpot);
+        String maxSpot = getArguments().getString("maxSpots");
+        spot.setText(maxSpot);
 
         return view;
     }

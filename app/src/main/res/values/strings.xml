@@ -6,4 +6,22 @@
     <string name="lunch">Lunch</string>
     <string name="dinner">Dinner</string>
     <string name="mm_dd_yyyy">MM/DD/YYYY</string>
+    <string name="active_plans">Active Plans</string>
+    <string name="main_breakfast">Breakfast</string>
+    <string name="main_lunch">Lunch</string>
+    <string name="main_dinner">Dinner</string>
+    <string name="create_plan">Create Plan</string>
+    <string name="_00_00">00:00</string>
+    <string name="_1">1</string>
+    <string name="location">Location:</string>
+    <string name="date">Date:</string>
+    <string name="time">Time:</string>
+    <string name="maximum_spot">Maximum Spot:</string>
+    <string name="description">Description:</string>
+    <string name="create">Create</string>
+    <string name="meal_type">Meal Type:</string>
+    <string name="dinner_plan">Dinner Plan</string>
+    <string name="new_plan">New Plan</string>
+    <string name="breakfast_plan">Breakfast Plan</string>
+    <string name="lunch_plan">Lunch Plan</string>
 </resources>
