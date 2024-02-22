@@ -35,8 +35,8 @@
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_createPlan"
         android:name="com.example.eat.CreatePlanFragment"
-        android:layout_width="413dp"
-        android:layout_height="641dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginBottom="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

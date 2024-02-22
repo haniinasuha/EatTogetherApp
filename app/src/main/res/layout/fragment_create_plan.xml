@@ -117,7 +117,7 @@
                 android:layout_height="48dp"
                 android:layout_marginStart="16dp"
                 android:ems="10"
-                android:hint="@string/_00_00"
+                android:hint="@string/_00_00_am_pm"
                 android:inputType="time" />
         </LinearLayout>
 
@@ -179,7 +179,7 @@
             android:layout_width="115dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="15dp"
             android:backgroundTint="#820505"
             android:text="@string/create" />
     </LinearLayout>
