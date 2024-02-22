@@ -139,7 +139,7 @@
 
             <EditText
                 android:id="@+id/editTextNumber"
-                android:layout_width="209dp"
+                android:layout_width="50dp"
                 android:layout_height="48dp"
                 android:ems="2"
                 android:hint="@string/_1"
