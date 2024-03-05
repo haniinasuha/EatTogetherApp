@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "503999013614",
+    "project_id": "eattogetherdatabase-160dc",
+    "storage_bucket": "eattogetherdatabase-160dc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:503999013614:android:20ac7592ba3eef725fc9ff",
+        "android_client_info": {
+          "package_name": "com.example.eat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjQybaEf1V1jcIBhr5G8yompnsZc2HLZM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
