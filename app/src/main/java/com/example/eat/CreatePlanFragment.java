@@ -44,7 +44,22 @@ public class CreatePlanFragment extends Fragment {
             public void onClick(View v) {
                 int radioId = radioGroup.getCheckedRadioButtonId();
                 radioButton = view.findViewById(radioId);
+
+                String description = descInput.getText().toString();
+
+                int radioIdd = radioGroup.getCheckedRadioButtonId();
+                radioButton = view.findViewById(radioIdd);
+                String mealType = radioButton.getText().toString();
+
+                String dateStr = date.getText().toString();
+                String timeStr = time.getText().toString();
+
+                int spots = Integer.parseInt(spot.getText().toString());
+                Plan plan = new Plan(description, spots, mealType, "TODO NOT ADDED LOC" ,dateStr, timeStr);
+                viewModel.addPlan(plan);
+
                 ((CreatePlan) getActivity()).passData(descInput, radioButton, date, time, spot);
+
             }
         });
 
