@@ -3,7 +3,7 @@ package com.example.eat;
 import java.io.Serial;
 import java.io.Serializable;
 
-public class Plan {
+public class Plan implements Serializable {
     private String description;
     private int spots;
     private String mealType; //breakfast, lunch, dinner
