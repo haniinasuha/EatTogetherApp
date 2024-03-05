@@ -3,6 +3,7 @@ package com.example.eat;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,7 @@ import com.google.android.material.textfield.TextInputEditText;
 
 public class CreatePlanFragment extends Fragment {
 
+    private PlanViewModel viewModel;
     TextInputEditText descInput;
     Button btnCreate;
     RadioGroup radioGroup;
@@ -36,6 +38,7 @@ public class CreatePlanFragment extends Fragment {
         date = view.findViewById(R.id.editTextDate);
         time = view.findViewById(R.id.editTextTime);
         spot = view.findViewById(R.id.editTextNumber);
+        viewModel = new ViewModelProvider(this).get(PlanViewModel.class);
         btnCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
