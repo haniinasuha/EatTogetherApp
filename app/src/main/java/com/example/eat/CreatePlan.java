@@ -2,6 +2,7 @@ package com.example.eat;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -12,17 +13,20 @@ import com.google.android.material.textfield.TextInputEditText;
 
 public class CreatePlan extends AppCompatActivity {
     private static final String TAG = "CreatePlan";
+    private PlanViewModel viewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_plan);
         Log.d(TAG, "onCreate");
+        viewModel = new ViewModelProvider(this).get(PlanViewModel.class);
 
     }
 
     @Override
     protected void onStart() {
         super.onStart();
+        viewModel.loadPlans();
         Log.d(TAG, "onStart");
     }
 
@@ -70,6 +74,17 @@ public class CreatePlan extends AppCompatActivity {
         fragmentPlanDetails.setArguments(bundle_desc);
 
         this.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_createPlan, fragmentPlanDetails).commit();
+
+        // viewmodel
+        String dateStr = date.getText().toString();
+        String timeStr = time.getText().toString();
+
+        int spots = Integer.parseInt(spot.getText().toString());
+        String description = text.getText().toString();
+        String mealType = btn.getText().toString();
+        Plan plan = new Plan(description, spots, mealType, "TODO NOT ADDED LOC" ,dateStr, timeStr);
+        viewModel.addPlan(plan);
     }
+
 
 }

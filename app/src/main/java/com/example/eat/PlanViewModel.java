@@ -1,7 +1,5 @@
 package com.example.eat;
 
-import android.util.Log;
-
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -20,15 +18,13 @@ import java.util.List;
 public class PlanViewModel extends ViewModel {
     private MutableLiveData<List<Plan>> plans;
     private FirebaseDatabase db;
-    private DatabaseReference reference;
+    private DatabaseReference refPlans;
 
     public PlanViewModel()
     {
         db = FirebaseDatabase.getInstance();
-        reference = db.getReference("Plans");
+        refPlans = db.getReference().child("Plans");
         plans = new MutableLiveData<>();
-        loadPlans();
-
     }
     public LiveData<List<Plan>> getPlans() {
         if (plans == null) {
@@ -37,9 +33,10 @@ public class PlanViewModel extends ViewModel {
         return plans;
     }
 
-    private void loadPlans()
+    public void loadPlans()
     {
-        reference.addValueEventListener(new ValueEventListener()
+
+        refPlans.addValueEventListener(new ValueEventListener()
         {
 
             @Override
@@ -56,19 +53,20 @@ public class PlanViewModel extends ViewModel {
             @Override
             public void onCancelled(@NonNull DatabaseError error)
             {
-                //todo: handle error
+                System.out.println("The read failed");
             }
         });
     }
 
     public void addPlan(Plan plan) {
-        List<Plan> currentPlans = new ArrayList<>();
+        List<Plan> currentPlans = plans.getValue();
         if (plans!= null) {
             currentPlans.add(plan);
             plans.setValue(currentPlans);
-            reference.setValue(currentPlans);
+            refPlans.setValue(currentPlans);
         }
     }
+
 
 }
 
