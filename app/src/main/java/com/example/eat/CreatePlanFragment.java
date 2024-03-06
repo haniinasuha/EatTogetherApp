@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -43,6 +44,9 @@ public class CreatePlanFragment extends Fragment {
         date = view.findViewById(R.id.editTextDate);
         time = view.findViewById(R.id.editTextTime);
         spot = view.findViewById(R.id.editTextNumber);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, locations);
+        Spinner spinner = view.findViewById(R.id.spinner);
+        spinner.setAdapter(adapter);
         btnCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
