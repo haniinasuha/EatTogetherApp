@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -25,6 +26,11 @@ public class CreatePlanFragment extends Fragment {
     EditText date;
     EditText time;
     EditText spot;
+
+    String[] locations = {"Berry Cafe", "KSA cafe", "Mirror Lake Eatery", "Curl Market",
+            "Oxley's by the numbers", "Terra Byte Cafe", "Traditions by Scott", "Woody's Tavern",
+            "Union Market"};
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

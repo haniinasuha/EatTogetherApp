@@ -27,12 +27,12 @@ public class PlanViewModel extends ViewModel {
         db = FirebaseDatabase.getInstance();
         reference = db.getReference("Plans");
         plans = new MutableLiveData<>();
+        loadPlans();
 
     }
     public LiveData<List<Plan>> getPlans() {
         if (plans == null) {
             plans = new MutableLiveData<>();
-            loadPlans();
         }
         return plans;
     }
