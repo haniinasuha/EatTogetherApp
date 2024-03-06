@@ -11,6 +11,7 @@ public class Plan implements Serializable {
 
     private String location;
     private String time; //format 00:00
+    private String Id;
 
     public Plan() {
         // Default constructor required for Firebase serialization
@@ -59,4 +60,6 @@ public class Plan implements Serializable {
         return location;
     }
     public void setLocation(String loc) {location = loc;}
+    public String getId() {return Id;}
+    public void setId(String id) {this.Id = id;}
 }

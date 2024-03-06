@@ -60,7 +60,7 @@ public class CreatePlan extends AppCompatActivity {
         Log.d(TAG, "onDestroy");
     }
 
-    public void passData(TextInputEditText text, RadioButton btn, EditText date, EditText time, EditText spot) {
+    public void passData(TextInputEditText text, RadioButton btn, EditText date, EditText time, EditText spot, String loc) {
 
         Bundle bundle_desc = new Bundle();
         bundle_desc.putString("desc", text.getText().toString());
@@ -82,7 +82,7 @@ public class CreatePlan extends AppCompatActivity {
         int spots = Integer.parseInt(spot.getText().toString());
         String description = text.getText().toString();
         String mealType = btn.getText().toString();
-        Plan plan = new Plan(description, spots, mealType, "TODO NOT ADDED LOC" ,dateStr, timeStr);
+        Plan plan = new Plan(description, spots, mealType, loc ,dateStr, timeStr);
         viewModel.addPlan(plan);
     }
 
