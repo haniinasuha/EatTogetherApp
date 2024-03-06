@@ -11,53 +11,100 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center">
+        android:background="#FF0000"
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Login"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <com.google.android.material.textfield.TextInputLayout
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="360dp"
+            android:background="#838383">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/loginEmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Email" />
+            <LinearLayout
+                android:layout_width="392dp"
+                android:layout_height="match_parent"
+                android:background="#C1C0C0"
+                android:gravity="center"
+                android:orientation="vertical">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-black"
+                    android:gravity="center"
+                    android:text="EAT TOGETHER"
+                    android:textColor="#F30000"
+                    android:textSize="34sp"
+                    android:textStyle="bold" />
 
-        <com.google.android.material.textfield.TextInputLayout
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-black"
+                    android:text="MEAL PLANNING APP"
+                    android:textColor="#FB0000"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="365dp"
+            android:background="#FBFBFB">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/loginPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Password" />
-        </com.google.android.material.textfield.TextInputLayout>
+            <LinearLayout
+                android:layout_width="394dp"
+                android:layout_height="342dp"
+                android:gravity="center"
+                android:orientation="vertical">
 
-        <Button
-            android:id="@+id/btnLogin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Login" />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="295dp"
+                    android:layout_height="wrap_content"
+                    android:background="#C5BFBF">
 
-        <Button
-            android:id="@+id/btnRegisterAccount"
-            android:layout_width="136dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Register Account" />
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/loginEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Email" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="295dp"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/loginPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:background="#CAC9C9"
+                        android:hint="Password" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:id="@+id/btnLogin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:backgroundTint="#F60606"
+                    android:text="Login" />
+
+                <Button
+                    android:id="@+id/btnRegisterAccount"
+                    android:layout_width="136dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:backgroundTint="#F60707"
+                    android:text="Register Account" />
+
+            </LinearLayout>
+
+        </FrameLayout>
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
