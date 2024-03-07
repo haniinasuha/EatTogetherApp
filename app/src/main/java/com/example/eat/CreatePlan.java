@@ -26,7 +26,6 @@ public class CreatePlan extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        viewModel.loadPlans();
         Log.d(TAG, "onStart");
     }
 
