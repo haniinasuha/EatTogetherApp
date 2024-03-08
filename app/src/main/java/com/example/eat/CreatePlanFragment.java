@@ -14,25 +14,17 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
-public class CreatePlanFragment extends Fragment {
+public class CreatePlanFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
     TextInputEditText descInput;
     Button btnCreate;
     RadioGroup radioGroup;
     RadioButton radioButton;
-    EditText date;
-    EditText time;
-    EditText spot;    
-    String location;
-
-    String[] locationsOptions = {"Berry Cafe", "KSA cafe", "Mirror Lake Eatery", "Curl Market",
-            "Oxley's by the numbers", "Terra Byte Cafe", "Traditions by Scott", "Woody's Tavern",
-            "Union Market"};
-
+    EditText date, time, spot;
+    Spinner spinnerLoc;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -46,37 +38,34 @@ public class CreatePlanFragment extends Fragment {
         date = view.findViewById(R.id.editTextDate);
         time = view.findViewById(R.id.editTextTime);
         spot = view.findViewById(R.id.editTextNumber);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, locationsOptions);
-        Spinner spinner = view.findViewById(R.id.spinner);
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                location = (String) parent.getItemAtPosition(position);
-            }
+        spinnerLoc = view.findViewById(R.id.spinner_loc);
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                String message = "Please select a location";
-                Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show();
-            }
-        });
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.location, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerLoc.setAdapter(adapter);
+        spinnerLoc.setOnItemSelectedListener(this);
         btnCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int radioId = radioGroup.getCheckedRadioButtonId();
                 radioButton = view.findViewById(radioId);
-
-                int radioIdd = radioGroup.getCheckedRadioButtonId();
-                radioButton = view.findViewById(radioIdd);
-
-
-                ((CreatePlan) getActivity()).passData(descInput, radioButton, date, time, spot, location);
-
+                String text = spinnerLoc.getSelectedItem().toString();
+                ((CreatePlanActivity) getActivity()).passData(descInput, radioButton, date, time, spot, text);
             }
         });
 
 
+
         return view;
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        String text = parent.getItemAtPosition(position).toString();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }

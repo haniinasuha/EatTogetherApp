@@ -1,22 +1,73 @@
 package com.example.eat;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
-public class MainActivity extends AppCompatActivity {
+
+public class ActivePlanActivity extends AppCompatActivity {
+
+    FirebaseAuth auth;
+    FirebaseUser user;
+    Toolbar toolbar;
     private static final String TAG = "MainActivity";
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.home_menu, menu);
+        return true;
+    }
+
+    @SuppressLint("NonConstantResourceId")
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int item_id = item.getItemId();
+
+        if(item_id == R.id.item_1) {
+            FirebaseAuth.getInstance().signOut();
+            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+            startActivity(intent);
+        } else if (item_id == R.id.item_2) {
+            Intent intent = new Intent(getApplicationContext(), ActivePlanActivity.class);
+            startActivity(intent);
+        } else if (item_id == R.id.item_3) {
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_active_plan);
         Log.d(TAG, "onCreate");
+
+        toolbar = (Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
+
+        if (user == null) {
+            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+            startActivity(intent);
+            finish();
+        }
 
         Button btnBreakfast = findViewById(R.id.btn_breakfast);
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -108,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openCreate() {
-        startActivity(new Intent(this, CreatePlan.class));
+        startActivity(new Intent(this, CreatePlanActivity.class));
     }
 
 }

@@ -5,9 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentResultListener;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
@@ -23,6 +21,7 @@ public class PlanDetailsFragment extends Fragment {
     TextView date;
     TextView time;
     TextView spot;
+    TextView location;
     String planId;
     Button btnDelete;
     PlanViewModel viewModel;
@@ -40,7 +39,7 @@ public class PlanDetailsFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 viewModel.deletePlan(planId);
-                Intent intent = new Intent(getActivity(), MainActivity.class);
+                Intent intent = new Intent(getActivity(), ActivePlanActivity.class);
                 startActivity(intent);
             }
         });
@@ -52,6 +51,10 @@ public class PlanDetailsFragment extends Fragment {
         mealType = view.findViewById(R.id.txtView_mealType);
         String type = getArguments().getString("mealType");
         mealType.setText(type);
+
+        location = view.findViewById(R.id.txtView_location);
+        String loc = getArguments().getString("loc");
+        location.setText(loc);
 
         date = view.findViewById(R.id.txtView_date);
         String dateText = getArguments().getString("date");

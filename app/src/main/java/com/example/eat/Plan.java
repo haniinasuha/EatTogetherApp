@@ -1,6 +1,5 @@
 package com.example.eat;
 
-import java.io.Serial;
 import java.io.Serializable;
 
 public class Plan implements Serializable {

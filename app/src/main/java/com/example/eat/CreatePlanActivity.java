@@ -11,7 +11,7 @@ import android.widget.RadioButton;
 
 import com.google.android.material.textfield.TextInputEditText;
 
-public class CreatePlan extends AppCompatActivity {
+public class CreatePlanActivity extends AppCompatActivity {
     private static final String TAG = "CreatePlan";
     private PlanViewModel viewModel;
     @Override
@@ -20,7 +20,6 @@ public class CreatePlan extends AppCompatActivity {
         setContentView(R.layout.activity_create_plan);
         Log.d(TAG, "onCreate");
         viewModel = new ViewModelProvider(this).get(PlanViewModel.class);
-
     }
 
     @Override
@@ -71,21 +70,20 @@ public class CreatePlan extends AppCompatActivity {
         Plan plan = new Plan(description, spots, mealType, loc ,dateStr, timeStr);
         viewModel.addPlan(plan);
 
-        Bundle bundle_desc = new Bundle();
-        bundle_desc.putString("desc", description);
-        bundle_desc.putString("mealType", mealType);
-        bundle_desc.putString("date", dateStr);
-        bundle_desc.putString("time", timeStr);
-        bundle_desc.putString("maxSpots", spot.getText().toString());
-        bundle_desc.putString("planId", plan.getId());
+        Bundle bundle = new Bundle();
+        bundle.putString("desc", text.getText().toString());
+        bundle.putString("mealType", btn.getText().toString());
+        bundle.putString("date", date.getText().toString());
+        bundle.putString("time", time.getText().toString());
+        bundle.putString("maxSpots", spot.getText().toString());
+        bundle.putString("loc", loc);
+        bundle.putString("planId", plan.getId());
 
 
         Fragment fragmentPlanDetails = new PlanDetailsFragment();
-        fragmentPlanDetails.setArguments(bundle_desc);
+        fragmentPlanDetails.setArguments(bundle);
 
         this.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_createPlan, fragmentPlanDetails).commit();
-
     }
-
 
 }
