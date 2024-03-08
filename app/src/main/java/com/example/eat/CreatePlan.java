@@ -61,19 +61,6 @@ public class CreatePlan extends AppCompatActivity {
 
     public void passData(TextInputEditText text, RadioButton btn, EditText date, EditText time, EditText spot, String loc) {
 
-        Bundle bundle_desc = new Bundle();
-        bundle_desc.putString("desc", text.getText().toString());
-        bundle_desc.putString("mealType", btn.getText().toString());
-        bundle_desc.putString("date", date.getText().toString());
-        bundle_desc.putString("time", time.getText().toString());
-        bundle_desc.putString("maxSpots", spot.getText().toString());
-
-
-        Fragment fragmentPlanDetails = new PlanDetailsFragment();
-        fragmentPlanDetails.setArguments(bundle_desc);
-
-        this.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_createPlan, fragmentPlanDetails).commit();
-
         // viewmodel
         String dateStr = date.getText().toString();
         String timeStr = time.getText().toString();
@@ -83,6 +70,22 @@ public class CreatePlan extends AppCompatActivity {
         String mealType = btn.getText().toString();
         Plan plan = new Plan(description, spots, mealType, loc ,dateStr, timeStr);
         viewModel.addPlan(plan);
+
+        //replace toStrings to the variable
+        Bundle bundle_desc = new Bundle();
+        bundle_desc.putString("desc", text.getText().toString());
+        bundle_desc.putString("mealType", btn.getText().toString());
+        bundle_desc.putString("date", date.getText().toString());
+        bundle_desc.putString("time", time.getText().toString());
+        bundle_desc.putString("maxSpots", spot.getText().toString());
+        bundle_desc.putString("planId", plan.getId());
+
+
+        Fragment fragmentPlanDetails = new PlanDetailsFragment();
+        fragmentPlanDetails.setArguments(bundle_desc);
+
+        this.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_createPlan, fragmentPlanDetails).commit();
+
     }
 
 
