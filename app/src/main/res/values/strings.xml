@@ -25,4 +25,5 @@
     <string name="breakfast_plan">Breakfast Plan</string>
     <string name="lunch_plan">Lunch Plan</string>
     <string name="_00_00_am_pm">00:00 AM/PM</string>
+    <string name="Delete">Delete</string>
 </resources>
