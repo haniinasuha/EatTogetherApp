@@ -71,12 +71,11 @@ public class CreatePlan extends AppCompatActivity {
         Plan plan = new Plan(description, spots, mealType, loc ,dateStr, timeStr);
         viewModel.addPlan(plan);
 
-        //replace toStrings to the variable
         Bundle bundle_desc = new Bundle();
-        bundle_desc.putString("desc", text.getText().toString());
-        bundle_desc.putString("mealType", btn.getText().toString());
-        bundle_desc.putString("date", date.getText().toString());
-        bundle_desc.putString("time", time.getText().toString());
+        bundle_desc.putString("desc", description);
+        bundle_desc.putString("mealType", mealType);
+        bundle_desc.putString("date", dateStr);
+        bundle_desc.putString("time", timeStr);
         bundle_desc.putString("maxSpots", spot.getText().toString());
         bundle_desc.putString("planId", plan.getId());
 
