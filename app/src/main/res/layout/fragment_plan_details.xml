@@ -120,6 +120,15 @@
             android:layout_marginStart="35dp"
             android:textSize="16sp" />
 
+        <Button
+            android:id="@+id/btn_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#820505"
+            android:layout_marginTop="40dp"
+            android:layout_marginStart="20dp"
+            android:text="@string/delete" />
+
     </LinearLayout>
 
 </FrameLayout>

@@ -2,6 +2,7 @@ package com.example.eat;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -12,12 +13,13 @@ import com.google.android.material.textfield.TextInputEditText;
 
 public class CreatePlanActivity extends AppCompatActivity {
     private static final String TAG = "CreatePlan";
+    private PlanViewModel viewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_plan);
         Log.d(TAG, "onCreate");
-
+        viewModel = new ViewModelProvider(this).get(PlanViewModel.class);
     }
 
     @Override
@@ -58,6 +60,16 @@ public class CreatePlanActivity extends AppCompatActivity {
 
     public void passData(TextInputEditText text, RadioButton btn, EditText date, EditText time, EditText spot, String loc) {
 
+        // viewmodel
+        String dateStr = date.getText().toString();
+        String timeStr = time.getText().toString();
+
+        int spots = Integer.parseInt(spot.getText().toString());
+        String description = text.getText().toString();
+        String mealType = btn.getText().toString();
+        Plan plan = new Plan(description, spots, mealType, loc ,dateStr, timeStr);
+        viewModel.addPlan(plan);
+
         Bundle bundle = new Bundle();
         bundle.putString("desc", text.getText().toString());
         bundle.putString("mealType", btn.getText().toString());
@@ -65,6 +77,7 @@ public class CreatePlanActivity extends AppCompatActivity {
         bundle.putString("time", time.getText().toString());
         bundle.putString("maxSpots", spot.getText().toString());
         bundle.putString("loc", loc);
+        bundle.putString("planId", plan.getId());
 
 
         Fragment fragmentPlanDetails = new PlanDetailsFragment();
