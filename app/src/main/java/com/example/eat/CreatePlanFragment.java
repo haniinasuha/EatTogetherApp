@@ -3,28 +3,28 @@ package com.example.eat;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 
 import com.google.android.material.textfield.TextInputEditText;
 
-public class CreatePlanFragment extends Fragment {
+public class CreatePlanFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
-    private PlanViewModel viewModel;
     TextInputEditText descInput;
     Button btnCreate;
     RadioGroup radioGroup;
     RadioButton radioButton;
-    EditText date;
-    EditText time;
-    EditText spot;
+    EditText date, time, spot;
+    Spinner spinnerLoc;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -38,16 +38,34 @@ public class CreatePlanFragment extends Fragment {
         date = view.findViewById(R.id.editTextDate);
         time = view.findViewById(R.id.editTextTime);
         spot = view.findViewById(R.id.editTextNumber);
-        viewModel = new ViewModelProvider(this).get(PlanViewModel.class);
+        spinnerLoc = view.findViewById(R.id.spinner_loc);
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.location, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerLoc.setAdapter(adapter);
+        spinnerLoc.setOnItemSelectedListener(this);
         btnCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int radioId = radioGroup.getCheckedRadioButtonId();
                 radioButton = view.findViewById(radioId);
-                ((CreatePlan) getActivity()).passData(descInput, radioButton, date, time, spot);
+                String text = spinnerLoc.getSelectedItem().toString();
+                ((CreatePlanActivity) getActivity()).passData(descInput, radioButton, date, time, spot, text);
             }
         });
 
+
+
         return view;
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        String text = parent.getItemAtPosition(position).toString();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }

@@ -18,6 +18,7 @@ public class PlanDetailsFragment extends Fragment {
     TextView date;
     TextView time;
     TextView spot;
+    TextView location;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -32,6 +33,10 @@ public class PlanDetailsFragment extends Fragment {
         mealType = view.findViewById(R.id.txtView_mealType);
         String type = getArguments().getString("mealType");
         mealType.setText(type);
+
+        location = view.findViewById(R.id.txtView_location);
+        String loc = getArguments().getString("loc");
+        location.setText(loc);
 
         date = view.findViewById(R.id.txtView_date);
         String dateText = getArguments().getString("date");
