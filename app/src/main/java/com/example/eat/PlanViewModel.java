@@ -206,6 +206,10 @@ public class PlanViewModel extends ViewModel {
                 });
     }
 
+    public int getSize(){
+        return plans.getValue().size();
+    }
+
 
 }
 
