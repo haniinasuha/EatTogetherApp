@@ -71,12 +71,6 @@ public class CreatePlanActivity extends AppCompatActivity {
         viewModel.addPlan(plan);
 
         Bundle bundle = new Bundle();
-        bundle.putString("desc", text.getText().toString());
-        bundle.putString("mealType", btn.getText().toString());
-        bundle.putString("date", date.getText().toString());
-        bundle.putString("time", time.getText().toString());
-        bundle.putString("maxSpots", spot.getText().toString());
-        bundle.putString("loc", loc);
         bundle.putString("planId", plan.getId());
 
 
