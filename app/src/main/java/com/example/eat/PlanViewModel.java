@@ -23,6 +23,13 @@ public class PlanViewModel extends ViewModel {
     private MutableLiveData<List<Plan>> plans;
     private FirebaseDatabase db;
     private DatabaseReference refPlans;
+    private String mDescription;
+    private int mSpots;
+    private String mMealType; //breakfast, lunch, dinner
+    private String mDate; //format mm/dd/yy
+
+    private String mLocation;
+    private String mTime; //format 00:00
 
     public PlanViewModel()
     {
@@ -61,6 +68,45 @@ public class PlanViewModel extends ViewModel {
                 System.out.println("The read failed");
             }
         });
+    }
+
+    public void setPlanDetails(String mealType, String date, String time, int spots, String location, String description) {
+        mMealType = mealType;
+        mDate = date;
+        mTime = time;
+        mSpots = spots;
+        mLocation = location;
+        mDescription = description;
+    }
+
+    public String getDescription()
+    {
+        return mDescription;
+    }
+
+    public int getSpots()
+    {
+        return mSpots;
+    }
+
+    public String getMealType()
+    {
+        return mMealType;
+    }
+
+    public String getDate()
+    {
+        return mDate;
+    }
+
+    public String getTime()
+    {
+        return mTime;
+    }
+
+    public String getLocation()
+    {
+        return mLocation;
     }
 
     public void addPlan(Plan plan) {
@@ -205,6 +251,7 @@ public class PlanViewModel extends ViewModel {
                     }
                 });
     }
+
 
 
 }

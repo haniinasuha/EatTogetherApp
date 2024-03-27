@@ -60,7 +60,7 @@ public class CreatePlanActivity extends AppCompatActivity {
 
     public void passData(TextInputEditText text, RadioButton btn, EditText date, EditText time, EditText spot, String loc) {
 
-        // viewmodel
+        //viewmodel
         String dateStr = date.getText().toString();
         String timeStr = time.getText().toString();
 
@@ -83,7 +83,7 @@ public class CreatePlanActivity extends AppCompatActivity {
         Fragment fragmentPlanDetails = new PlanDetailsFragment();
         fragmentPlanDetails.setArguments(bundle);
 
-        this.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_createPlan, fragmentPlanDetails).commit();
+        this.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_createPlan, fragmentPlanDetails).addToBackStack("name").commit();
     }
 
 }

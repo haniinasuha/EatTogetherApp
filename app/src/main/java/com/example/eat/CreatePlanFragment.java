@@ -54,8 +54,6 @@ public class CreatePlanFragment extends Fragment implements AdapterView.OnItemSe
             }
         });
 
-
-
         return view;
     }
 

@@ -3,9 +3,7 @@ package com.example.eat;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentResultListener;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
@@ -24,21 +22,31 @@ public class PlanDetailsFragment extends Fragment {
     TextView location;
     String planId;
     Button btnDelete;
-    PlanViewModel viewModel;
+    Button btnEdit;
+    PlanViewModel planViewModel;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_plan_details, container, false);
-        viewModel = new ViewModelProvider(this).get(PlanViewModel.class);
+        planViewModel = new ViewModelProvider(this).get(PlanViewModel.class);
         planId = getArguments().getString("planId");
 
         btnDelete = view.findViewById(R.id.btn_delete);
+        btnEdit = view.findViewById(R.id.btn_edit);
+
+        btnEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                planViewModel.deletePlan(planId);
+                getParentFragmentManager().popBackStack();
+            }
+        });
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                viewModel.deletePlan(planId);
+                planViewModel.deletePlan(planId);
                 Intent intent = new Intent(getActivity(), ActivePlanActivity.class);
                 startActivity(intent);
             }
