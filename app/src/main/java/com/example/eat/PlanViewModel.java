@@ -209,6 +209,10 @@ public class PlanViewModel extends ViewModel {
     public int getSize(){
         return plans.getValue().size();
     }
+    public Plan getPlan(int index){
+        List<Plan> planList = plans.getValue();
+        return planList.get(index);
+    }
 
 
 }

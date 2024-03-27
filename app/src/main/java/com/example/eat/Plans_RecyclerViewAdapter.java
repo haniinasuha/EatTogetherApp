@@ -28,8 +28,9 @@ public class Plans_RecyclerViewAdapter extends RecyclerView.Adapter<Plans_Recycl
 
     @Override
     public void onBindViewHolder(@NonNull Plans_RecyclerViewAdapter.MyViewHolder holder, int position) {
-
-
+        holder.time.setText(activePlans.getPlan(position).getTime());
+        holder.location.setText(activePlans.getPlan(position).getLocation());
+        holder.desc.setText(activePlans.getPlan(position).getDescription());
     }
 
     @Override
