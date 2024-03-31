@@ -34,7 +34,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         Plan plan = list.get(position);
         holder.name.setText(plan.getId());
-        holder.date.setText(plan.getDate());
+        holder.date.setText("Date: " + plan.getDate());
         holder.desc.setText(plan.getDescription());
         holder.spots.setText("Spots: " + plan.getSpots());
     }

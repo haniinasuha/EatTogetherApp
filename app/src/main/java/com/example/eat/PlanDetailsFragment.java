@@ -33,7 +33,7 @@ public class PlanDetailsFragment extends Fragment {
         planViewModel = new ViewModelProvider(this).get(PlanViewModel.class);
         planId = getArguments().getString("planId");
 
-        Plan selectedPlan = viewModel.getPlan(planId);
+        Plan selectedPlan = planViewModel.getPlan(planId);
 
         btnDelete = view.findViewById(R.id.btn_delete);
         btnEdit = view.findViewById(R.id.btn_edit);
