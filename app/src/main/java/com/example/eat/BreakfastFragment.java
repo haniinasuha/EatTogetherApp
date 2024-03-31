@@ -61,6 +61,7 @@ public class BreakfastFragment extends Fragment {
 
             }
         });
+
         return view;
     }
 }

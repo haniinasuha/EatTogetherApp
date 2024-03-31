@@ -39,10 +39,31 @@
         android:layout_height="0dp"
         android:layout_marginBottom="2dp"
         android:foregroundGravity="center"
+        android:scrollbars="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView"
         tools:layout="@layout/fragment_create_plan" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".BottomNavBar">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/nav_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@color/red"
+            android:elevation="2dp"
+            app:itemIconSize="30dp"
+            app:itemIconTint="@color/white"
+            app:itemTextColor="@color/white"
+            app:itemActiveIndicatorStyle="@color/red"
+            app:menu="@menu/home_menu"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

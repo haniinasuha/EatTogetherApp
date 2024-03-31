@@ -49,8 +49,14 @@ public class CreatePlanFragment extends Fragment implements AdapterView.OnItemSe
             public void onClick(View v) {
                 int radioId = radioGroup.getCheckedRadioButtonId();
                 radioButton = view.findViewById(radioId);
-                String text = spinnerLoc.getSelectedItem().toString();
-                ((CreatePlanActivity) getActivity()).passData(descInput, radioButton, date, time, spot, text);
+                String mealType = radioButton.getText().toString();
+                String dateStr = date.getText().toString();
+                String timeStr = time.getText().toString();
+
+                int spots = Integer.parseInt(spot.getText().toString());
+                String description = descInput.getText().toString();
+                String loc = spinnerLoc.getSelectedItem().toString();
+                ((CreatePlanActivity) getActivity()).passData(description, mealType, dateStr, timeStr, spots, loc);
             }
         });
 

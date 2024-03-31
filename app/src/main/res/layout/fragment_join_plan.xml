@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/fragment_planDetails"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:scrollbars="vertical"
-    tools:context=".PlanDetailsFragment">
+    tools:context=".JoinPlanFragment">
 
     <LinearLayout
         android:layout_width="415dp"
@@ -121,30 +119,14 @@
             android:layout_marginStart="35dp"
             android:textSize="16sp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <Button
-                android:id="@+id/btn_edit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="40dp"
-                android:backgroundTint="#820505"
-                android:text="@string/edit" />
-
-            <Button
-                android:id="@+id/btn_delete"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="40dp"
-                android:backgroundTint="#820505"
-                android:text="@string/delete" />
-
-        </LinearLayout>
-
+        <Button
+            android:id="@+id/btn_join"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="40dp"
+            android:backgroundTint="#820505"
+            android:text="Join" />
     </LinearLayout>
 
 </FrameLayout>

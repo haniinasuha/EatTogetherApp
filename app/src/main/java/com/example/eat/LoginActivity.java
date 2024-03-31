@@ -91,38 +91,6 @@ public class LoginActivity extends AppCompatActivity {
                             }
                         });
 
-                /**
-                reference = FirebaseDatabase.getInstance().getReference("Users");
-                Query checkUserDatabase = reference.orderByChild("email").equalTo(email);
-                checkUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.exists()) {
-                            String passwordFromDB = snapshot.child(email).child("password").getValue(String.class);
-                            if(Objects.equals(passwordFromDB, password)) {
-                                Toast.makeText(Login.this, "Login Successful",
-                                        Toast.LENGTH_SHORT).show();
-
-                                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                startActivity(intent);
-                                finish();
-                            } else {
-                                Toast.makeText(Login.this, "Invalid Credentials",
-                                        Toast.LENGTH_SHORT).show();
-                            }
-                        }
-
-                        else {
-                            Toast.makeText(Login.this, "User does not exists",
-                                    Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-
-                }); **/
             }
         });
     }

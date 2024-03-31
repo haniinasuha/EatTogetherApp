@@ -15,6 +15,12 @@
         android:theme="@style/Theme.Eat"
         tools:targetApi="31">
         <activity
+            android:name=".PlanDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BottomNavBar"
+            android:exported="false" />
+        <activity
             android:name=".RecyclerViewPlan"
             android:exported="false" />
         <activity
@@ -36,7 +42,7 @@
             android:exported="false" />
         <activity
             android:name=".ActivePlanActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
     </application>
 
 </manifest>

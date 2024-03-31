@@ -15,6 +15,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -23,33 +25,8 @@ public class ActivePlanActivity extends AppCompatActivity {
 
     FirebaseAuth auth;
     FirebaseUser user;
-    Toolbar toolbar;
+    BottomNavigationView navBar;
     private static final String TAG = "MainActivity";
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.home_menu, menu);
-        return true;
-    }
-
-    @SuppressLint("NonConstantResourceId")
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int item_id = item.getItemId();
-
-        if(item_id == R.id.item_1) {
-            FirebaseAuth.getInstance().signOut();
-            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-            startActivity(intent);
-        } else if (item_id == R.id.item_2) {
-            Intent intent = new Intent(getApplicationContext(), ActivePlanActivity.class);
-            startActivity(intent);
-        } else if (item_id == R.id.item_3) {
-            finish();
-        }
-        return super.onOptionsItemSelected(item);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,8 +34,30 @@ public class ActivePlanActivity extends AppCompatActivity {
         setContentView(R.layout.activity_active_plan);
         Log.d(TAG, "onCreate");
 
-        toolbar = (Toolbar)findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        navBar = findViewById(R.id.nav_bar);
+        navBar.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int item_id = item.getItemId();
+
+                if(item_id == R.id.log_out) {
+                    FirebaseAuth.getInstance().signOut();
+                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(intent);
+                    finish();
+                    return true;
+                } else if (item_id == R.id.home) {
+                    Intent intent = new Intent(getApplicationContext(), ActivePlanActivity.class);
+                    startActivity(intent);
+                    finish();
+                    return true;
+                } else if (item_id == R.id.profile) {
+                    finish();
+                    return true;
+                }
+                return false;
+            }
+        });
 
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();

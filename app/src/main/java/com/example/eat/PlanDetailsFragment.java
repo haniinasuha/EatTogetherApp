@@ -12,17 +12,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
+
 public class PlanDetailsFragment extends Fragment {
 
-    TextView desc;
-    TextView mealType;
-    TextView date;
-    TextView time;
-    TextView spot;
-    TextView location;
+    TextView desc, mealType, date, time, spot, location;
     String planId;
-    Button btnDelete;
-    Button btnEdit;
+    Button btnDelete, btnEdit;
     PlanViewModel planViewModel;
 
     @Override

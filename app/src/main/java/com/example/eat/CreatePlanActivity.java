@@ -1,25 +1,62 @@
 package com.example.eat;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.RadioButton;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class CreatePlanActivity extends AppCompatActivity {
     private static final String TAG = "CreatePlan";
     private PlanViewModel viewModel;
+    BottomNavigationView navBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_plan);
         Log.d(TAG, "onCreate");
         viewModel = new ViewModelProvider(this).get(PlanViewModel.class);
+
+        navBar = findViewById(R.id.nav_bar);
+        navBar.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int item_id = item.getItemId();
+
+                if(item_id == R.id.log_out) {
+                    FirebaseAuth.getInstance().signOut();
+                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(intent);
+                    finish();
+                    return true;
+                } else if (item_id == R.id.home) {
+                    Intent intent = new Intent(getApplicationContext(), ActivePlanActivity.class);
+                    startActivity(intent);
+                    finish();
+                    return true;
+                } else if (item_id == R.id.profile) {
+                    finish();
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 
     @Override
@@ -58,24 +95,19 @@ public class CreatePlanActivity extends AppCompatActivity {
         Log.d(TAG, "onDestroy");
     }
 
-    public void passData(TextInputEditText text, RadioButton btn, EditText date, EditText time, EditText spot, String loc) {
+    public void passData(String description, String mealType, String dateStr, String timeStr, int spots, String loc) {
 
         //viewmodel
-        String dateStr = date.getText().toString();
-        String timeStr = time.getText().toString();
 
-        int spots = Integer.parseInt(spot.getText().toString());
-        String description = text.getText().toString();
-        String mealType = btn.getText().toString();
         Plan plan = new Plan(description, spots, mealType, loc ,dateStr, timeStr);
         viewModel.addPlan(plan);
 
         Bundle bundle = new Bundle();
-        bundle.putString("desc", text.getText().toString());
-        bundle.putString("mealType", btn.getText().toString());
-        bundle.putString("date", date.getText().toString());
-        bundle.putString("time", time.getText().toString());
-        bundle.putString("maxSpots", spot.getText().toString());
+        bundle.putString("desc", description);
+        bundle.putString("mealType", mealType);
+        bundle.putString("date", dateStr);
+        bundle.putString("time", timeStr);
+        bundle.putString("maxSpots", String.valueOf(spots));
         bundle.putString("loc", loc);
         bundle.putString("planId", plan.getId());
 

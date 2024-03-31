@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item android:id="@+id/item_1"
-        android:title="Sign Out"
+    <item android:id="@+id/home"
+        android:title="@string/home"
+        android:icon="@drawable/ic_home"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/profile"
+        android:title="@string/profile"
+        android:icon="@drawable/ic_account"
         app:showAsAction= "never" />
 
-    <item android:id="@+id/item_2"
-        android:title="Home"
-        app:showAsAction= "never" />
-
-    <item android:id="@+id/item_3"
-        android:title="Exit"
+    <item android:id="@+id/log_out"
+        android:title="@string/log_out"
+        android:icon="@drawable/ic_logout"
         app:showAsAction= "never" />
 </menu>

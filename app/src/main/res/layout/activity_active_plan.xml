@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/active_view"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     tools:context=".ActivePlanActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -107,12 +107,26 @@
         android:id="@+id/btn_create"
         android:layout_width="153dp"
         android:layout_height="62dp"
+        android:layout_marginTop="5dp"
         android:backgroundTint="#820505"
         android:text="@string/create_plan"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/nav_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/red"
+        android:elevation="2dp"
+        app:itemActiveIndicatorStyle="@color/red"
+        app:itemIconSize="30dp"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/home_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
