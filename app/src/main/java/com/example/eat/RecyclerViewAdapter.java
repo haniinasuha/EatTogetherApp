@@ -36,6 +36,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.name.setText(plan.getId());
         holder.date.setText(plan.getDate());
         holder.desc.setText(plan.getDescription());
+        holder.spots.setText("Spots: " + plan.getSpots());
     }
 
     @Override
@@ -45,13 +46,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public static class AdapterViewHolder extends RecyclerView.ViewHolder {
 
-        TextView name, desc, date;
+        TextView name, desc, date, spots;
         public AdapterViewHolder(@NonNull View itemView) {
             super(itemView);
 
             name = itemView.findViewById(R.id.txt_displayName);
             date = itemView.findViewById(R.id.txt_displayDate);
             desc = itemView.findViewById(R.id.txt_displayDesc);
+            spots = itemView.findViewById(R.id.txt_displaySpots);
         }
     }
 }
