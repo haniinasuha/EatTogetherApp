@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.EditText;
 import android.widget.RadioButton;
-
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class CreatePlanActivity extends AppCompatActivity {
@@ -63,11 +63,12 @@ public class CreatePlanActivity extends AppCompatActivity {
         //viewmodel
         String dateStr = date.getText().toString();
         String timeStr = time.getText().toString();
-
+        String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         int spots = Integer.parseInt(spot.getText().toString());
         String description = text.getText().toString();
         String mealType = btn.getText().toString();
         Plan plan = new Plan(description, spots, mealType, loc ,dateStr, timeStr);
+        plan.setUserID(userID);
         viewModel.addPlan(plan);
 
         Bundle bundle = new Bundle();
