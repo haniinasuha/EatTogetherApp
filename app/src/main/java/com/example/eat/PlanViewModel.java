@@ -225,6 +225,16 @@ public class PlanViewModel extends ViewModel {
                 });
     }
 
+    public Plan getPlan(String PlanId)
+    {
+        List<Plan> planList = plans.getValue();
+        for (Plan p : planList){
+            if(p.getId().equals(PlanId)) return p;
+        }
+        Log.d("PlanViewModel","Couldnt find plan");
+        return null;
+    }
+
 
 
 }

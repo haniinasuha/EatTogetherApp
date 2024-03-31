@@ -29,6 +29,8 @@ public class PlanDetailsFragment extends Fragment {
         planViewModel = new ViewModelProvider(this).get(PlanViewModel.class);
         planId = getArguments().getString("planId");
 
+        Plan selectedPlan = planViewModel.getPlan(planId);
+
         btnDelete = view.findViewById(R.id.btn_delete);
         btnEdit = view.findViewById(R.id.btn_edit);
 
@@ -49,28 +51,22 @@ public class PlanDetailsFragment extends Fragment {
         });
 
         desc = view.findViewById(R.id.txtView_desc);
-        String description = getArguments().getString("desc");
-        desc.setText(description);
+        desc.setText(selectedPlan.getDescription());
 
         mealType = view.findViewById(R.id.txtView_mealType);
-        String type = getArguments().getString("mealType");
-        mealType.setText(type);
+        mealType.setText(selectedPlan.getMealType());
 
         location = view.findViewById(R.id.txtView_location);
-        String loc = getArguments().getString("loc");
-        location.setText(loc);
+        location.setText(selectedPlan.getLocation());
 
         date = view.findViewById(R.id.txtView_date);
-        String dateText = getArguments().getString("date");
-        date.setText(dateText);
+        date.setText(selectedPlan.getDate());
 
         time = view.findViewById(R.id.txtView_time);
-        String timeText = getArguments().getString("time");
-        time.setText(timeText);
+        time.setText(selectedPlan.getTime());
 
         spot = view.findViewById(R.id.txtView_maxSpot);
-        String maxSpot = getArguments().getString("maxSpots");
-        spot.setText(maxSpot);
+        spot.setText(selectedPlan.getSpots());
 
         return view;
     }

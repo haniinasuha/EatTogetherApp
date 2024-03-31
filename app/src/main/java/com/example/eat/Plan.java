@@ -44,9 +44,9 @@ public class Plan implements Serializable {
 
     public String getDate()
     {
-        return date;
+        return this.date;
     }
-    public void setDate(String mealType) {this.date = date;}
+    public void setDate(String date) {this.date = date;}
 
     public String getTime()
     {
