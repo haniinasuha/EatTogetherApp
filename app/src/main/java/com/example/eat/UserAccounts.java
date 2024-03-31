@@ -1,6 +1,8 @@
 package com.example.eat;
 
-public class UserAccounts {
+import java.io.Serializable;
+
+public class UserAccounts implements Serializable {
     String firstName, lastName, email, password;
 
 

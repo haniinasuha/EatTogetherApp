@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -17,16 +19,21 @@ public class ProfileFragment extends Fragment {
     FirebaseAuth auth;
     FirebaseUser user;
 
+    UserAccViewModel viewModel;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        viewModel = new ViewModelProvider(this).get(UserAccViewModel.class); // Initialize with UserViewModel
+        viewModel.loadUsers();
+
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
 
         username = view.findViewById(R.id.txtView_username);
-        String userFullName = user.getDisplayName();
-        username.setText(userFullName);
+        UserAccounts userView = viewModel.getUser(user.getEmail());
+        //username.setText(userView.getFirstName() + " " + userView.getLastName());
 
         email = view.findViewById(R.id.txtView_email);
         String desc = "Email:\n" + user.getEmail();
