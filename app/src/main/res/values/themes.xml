@@ -6,4 +6,8 @@
     </style>
 
     <style name="Theme.Eat" parent="Base.Theme.Eat" />
+
+    <style name="DialogTheme" parent="Theme.MaterialComponents.DayNight.Dialog">
+        <item name="colorAccent">@color/red</item>
+    </style>
 </resources>

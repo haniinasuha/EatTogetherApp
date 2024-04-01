@@ -21,6 +21,9 @@ import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class CreatePlanActivity extends AppCompatActivity {
     private static final String TAG = "CreatePlan";
     private PlanViewModel viewModel;
@@ -57,6 +60,7 @@ public class CreatePlanActivity extends AppCompatActivity {
                 return false;
             }
         });
+
     }
 
     @Override
