@@ -1,24 +1,29 @@
 package com.example.eat;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import static androidx.fragment.app.FragmentManager.TAG;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class PlanActivity extends AppCompatActivity {
-
+public class ProfileActivity extends AppCompatActivity {
     BottomNavigationView navBar;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_plan);
+        setContentView(R.layout.activity_profile);
+        Fragment fragmentProfileDetails = new ProfileFragment();
+        this.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_profile, fragmentProfileDetails).commit();
 
         navBar = findViewById(R.id.nav_bar);
         navBar.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
