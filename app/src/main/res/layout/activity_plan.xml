@@ -39,7 +39,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+        app:layout_constraintTop_toBottomOf="@+id/txt_active">
 
         <TextView
             android:id="@+id/txt_upcomingPlans"
@@ -53,13 +53,13 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fragmentUpcomingPlans"
-            android:layout_width="match_parent"
             android:name="com.example.eat.UpcomingPlanFragment"
+            android:layout_width="match_parent"
             android:layout_height="250dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
-            tools:layout="@layout/fragment_upcoming_plan"/>
+            tools:layout="@layout/fragment_upcoming_plan" />
 
         <TextView
             android:id="@+id/txt_yourPlans"
@@ -81,7 +81,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="10dp"
-            tools:layout="@layout/fragment_your_plan"/>
+            tools:layout="@layout/fragment_your_plan" />
 
 
     </LinearLayout>
