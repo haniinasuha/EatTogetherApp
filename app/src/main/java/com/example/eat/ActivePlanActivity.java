@@ -54,6 +54,11 @@ public class ActivePlanActivity extends AppCompatActivity {
                 } else if (item_id == R.id.profile) {
                     finish();
                     return true;
+                } else if (item_id == R.id.plan) {
+                    Intent intent = new Intent(getApplicationContext(), PlanActivity.class);
+                    startActivity(intent);
+                    finish();
+                    return true;
                 }
                 return false;
             }

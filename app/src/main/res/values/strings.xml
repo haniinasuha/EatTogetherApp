@@ -46,4 +46,5 @@
     <string name="profile">Profile</string>
     <string name="log_out">Log Out</string>
     <string name="plan_details">Plan Details</string>
+    <string name="plans">Plans</string>
 </resources>

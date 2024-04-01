@@ -6,6 +6,11 @@
         android:icon="@drawable/ic_home"
         app:showAsAction="never" />
 
+    <item android:id="@+id/plan"
+        android:title="@string/plans"
+        android:icon="@drawable/ic_plan"
+        app:showAsAction="never" />
+
     <item android:id="@+id/profile"
         android:title="@string/profile"
         android:icon="@drawable/ic_account"

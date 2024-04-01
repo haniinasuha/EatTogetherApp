@@ -57,8 +57,6 @@ public class DinnerFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    //Calendar today = Calendar.getInstance();
-                    //Date currentDate = today.getTime();
                     String dateCurrent = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
 
                     String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();

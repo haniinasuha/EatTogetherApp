@@ -59,6 +59,7 @@
             app:layout_constraintStart_toStartOf="parent"
             android:background="@color/red"
             android:elevation="2dp"
+            app:labelVisibilityMode="labeled"
             app:itemIconSize="30dp"
             app:itemIconTint="@color/white"
             app:itemTextColor="@color/white"
