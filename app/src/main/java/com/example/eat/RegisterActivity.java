@@ -18,6 +18,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.DataSnapshot;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -27,7 +28,6 @@ public class RegisterActivity extends AppCompatActivity {
     FirebaseDatabase database;
     DatabaseReference reference;
     TextView txtLogin;
-    String userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,9 +77,9 @@ public class RegisterActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-                                    userID = mAuth.getUid();
+                                    String userID = mAuth.getCurrentUser().getUid();
                                     reference = database.getReference("Users");
-                                    UserAccounts user = new UserAccounts(firstName, lastName,email, password);
+                                    UserAccounts user = new UserAccounts(userID, firstName, lastName,email, password);
                                     reference.child(userID).setValue(user);
                                     Toast.makeText(RegisterActivity.this, "Account Created",
                                             Toast.LENGTH_SHORT).show();

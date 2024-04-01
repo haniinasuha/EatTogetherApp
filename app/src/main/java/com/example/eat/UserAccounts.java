@@ -1,25 +1,23 @@
 package com.example.eat;
 
 public class UserAccounts {
-    String firstName, lastName, email, password;
+    String userID,firstName, lastName, email, password;
 
 
     public UserAccounts() {
     }
 
-    public UserAccounts(String firstName, String lastName, String password) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.password = password;
-    }
-
-    public UserAccounts(String firstName, String lastName, String email, String password) {
+    public UserAccounts(String userID, String firstName, String lastName, String email, String password) {
+        this.userID = userID;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
     }
 
+    public String getUserID() { return userID; }
+
+    public void setUserID(String userID){ this.userID = userID; }
     public String getFirstName() {
         return firstName;
     }

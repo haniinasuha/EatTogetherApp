@@ -3,6 +3,7 @@ package com.example.eat;
 import java.io.Serializable;
 
 public class Plan implements Serializable {
+    private String userID;
     private String description;
     private int spots;
     private String mealType; //breakfast, lunch, dinner
@@ -15,6 +16,7 @@ public class Plan implements Serializable {
     public Plan() {
         // Default constructor required for Firebase serialization
     }
+
     public Plan(String desc, int spots, String mealType, String location, String date, String time)
     {
         this.description = desc;
@@ -24,7 +26,8 @@ public class Plan implements Serializable {
         this.date = date;
         this.time = time;
     }
-
+    public String getUserID() { return userID;}
+    public void setUserID(String userID) {this.userID=userID;}
     public String getDescription()
     {
         return description;
