@@ -23,7 +23,6 @@ public class PlanViewModel extends ViewModel {
     private MutableLiveData<List<Plan>> plans;
     private FirebaseDatabase db;
     private DatabaseReference refPlans;
-    String mealType;
 
     public PlanViewModel()
     {
@@ -93,23 +92,6 @@ public class PlanViewModel extends ViewModel {
                 });
     }
 
-    public String getMealType(String planId) {
-        //DatabaseReference planRef = refPlans.child(planId);
-
-        refPlans.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Plan plan = snapshot.getValue(Plan.class);
-                mealType = plan.getMealType();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-        return mealType;
-    }
 
     public void updateSpots(String planId, int newSpots) {
         DatabaseReference planRef = refPlans.child(planId);
