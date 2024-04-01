@@ -31,7 +31,7 @@ public class UserAccViewModel extends ViewModel {
 
     public void setUser(String userID)
     {
-        DatabaseReference currentUserRef = refUsers.child(userID);
+/*        DatabaseReference currentUserRef = refUsers.child(userID);
         currentUserRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -43,7 +43,7 @@ public class UserAccViewModel extends ViewModel {
                 // Handle any errors that occur during the data retrieval process
                 Log.e("User retrieval", "Failed to retrieve user: " + databaseError.getMessage());
             }
-        });
+        });*/
     }
 
     public UserAccounts getUser(String userID)

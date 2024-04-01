@@ -217,6 +217,14 @@ public class PlanViewModel extends ViewModel {
         return null;
     }
 
+    public void addParticipant(String planID, UserAccounts participant){
+        DatabaseReference planRef = refPlans.child(planID);
+        Plan plan = getPlan(planID);
+        ArrayList<UserAccounts> participants = plan.getParticipants();
+        participants.add(participant);
+        plan.setParticipants(participants);
+    }
+
 
 
 }

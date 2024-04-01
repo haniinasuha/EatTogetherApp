@@ -38,6 +38,8 @@ public class PlanActivity extends AppCompatActivity {
                     finish();
                     return true;
                 } else if (item_id == R.id.profile) {
+                    Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+                    startActivity(intent);
                     finish();
                     return true;
                 } else if (item_id == R.id.plan) {

@@ -56,6 +56,7 @@ public class PlanDetailsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 int newSpots = maxSpots - 1;
                 planViewModel.updateSpots(id, newSpots);
+                //planViewModel.addParticipant(id, participant); //need to get the current user
                 Intent intent = new Intent(getApplicationContext(), ActivePlanActivity.class);
                 startActivity(intent);
                 finish();

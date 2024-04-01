@@ -1,6 +1,7 @@
 package com.example.eat;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Plan implements Serializable {
     private String userID;
@@ -12,6 +13,7 @@ public class Plan implements Serializable {
     private String location;
     private String time; //format 00:00
     private String Id;
+    private ArrayList<UserAccounts> participants;
 
     public Plan() {
         // Default constructor required for Firebase serialization
@@ -25,6 +27,7 @@ public class Plan implements Serializable {
         this.location = location;
         this.date = date;
         this.time = time;
+        this.participants = new ArrayList<UserAccounts>();
     }
     public String getUserID() { return userID;}
     public void setUserID(String userID) {this.userID=userID;}
@@ -64,4 +67,9 @@ public class Plan implements Serializable {
     public void setLocation(String loc) {location = loc;}
     public String getId() {return Id;}
     public void setId(String id) {this.Id = id;}
+    public ArrayList<UserAccounts> getParticipants(){return this.participants;}
+
+    public void setParticipants(ArrayList<UserAccounts> participants) {
+        this.participants = participants;
+    }
 }
