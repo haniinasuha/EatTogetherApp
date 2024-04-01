@@ -97,7 +97,6 @@ public class CreatePlanActivity extends AppCompatActivity {
 
     public void passData(String description, String mealType, String dateStr, String timeStr, int spots, String loc) {
 
-        //viewmodel
         String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         Plan plan = new Plan(description, spots, mealType, loc ,dateStr, timeStr);
         plan.setUserID(userID);

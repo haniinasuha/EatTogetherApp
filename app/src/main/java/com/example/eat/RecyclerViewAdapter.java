@@ -18,6 +18,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.AdapterViewHolder> {
@@ -39,8 +42,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(@NonNull AdapterViewHolder holder, int position) {
 
+        FirebaseDatabase db;
+        DatabaseReference refUsers;
+
         Plan plan = list.get(position);
-        holder.name.setText(plan.getId());
+        String userId = plan.getUserID();
+        holder.name.setText(userId);
         holder.date.setText("Spots: " + plan.getSpots());
         holder.desc.setText(plan.getDescription());
 
