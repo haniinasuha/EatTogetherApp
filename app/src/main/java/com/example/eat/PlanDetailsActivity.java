@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -17,19 +18,27 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 public class PlanDetailsActivity extends AppCompatActivity {
     TextView desc, mealType, date, time, spot, location;
     Button btnJoin;
-    String id;
+    String id, userId;
     PlanViewModel planViewModel;
+    ArrayList<String> participant;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plan_details);
         planViewModel = new ViewModelProvider(this).get(PlanViewModel.class);
+
+        //participant = new ArrayList<>();
         Intent intent = getIntent();
         id = intent.getExtras().getString("Id");
+        //Plan plan = planViewModel.getPlan(id);
+
+        userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         desc = findViewById(R.id.txtView_desc);
         desc.setText(intent.getExtras().getString("desc"));
@@ -56,7 +65,24 @@ public class PlanDetailsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 int newSpots = maxSpots - 1;
                 planViewModel.updateSpots(id, newSpots);
-                //planViewModel.addParticipant(id, participant); //need to get the current user
+
+                DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Plans").child(id);
+                reference.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        Plan plan = snapshot.getValue(Plan.class);
+                        participant = plan.getMembers();
+                        participant.add(userId);
+                        plan.setMembers(participant);
+                        reference.child("members").setValue(participant);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
                 Intent intent = new Intent(getApplicationContext(), ActivePlanActivity.class);
                 startActivity(intent);
                 finish();

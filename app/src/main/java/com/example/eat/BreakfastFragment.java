@@ -20,6 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.lang.reflect.Array;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -32,6 +33,7 @@ public class BreakfastFragment extends Fragment {
     RecyclerViewAdapter adapter;
     ArrayList<Plan> list;
     PlanViewModel planViewModel;
+    ArrayList<String> participant;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -59,6 +61,7 @@ public class BreakfastFragment extends Fragment {
 
                     String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
                     Plan plan = dataSnapshot.getValue(Plan.class);
+                    participant = plan.getMembers();
 
                     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
                     String userDate = plan.getDate();
@@ -72,7 +75,7 @@ public class BreakfastFragment extends Fragment {
                     }
 
                     if(dateUser.after(currentDate)) {
-                        if (plan.getMealType().equals("Breakfast") && !(plan.getUserID().equals(userID)) && (plan.getSpots() > 0)) {
+                        if (plan.getMealType().equals("Breakfast") && !(plan.getUserID().equals(userID)) && (plan.getSpots() > 0) && !(participant.contains(userID))) {
                             list.add(plan);
                         }
                     }else {

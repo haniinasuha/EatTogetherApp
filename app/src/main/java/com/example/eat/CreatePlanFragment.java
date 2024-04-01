@@ -59,8 +59,8 @@ public class CreatePlanFragment extends Fragment implements AdapterView.OnItemSe
             @Override
             public void onClick(View v) {
 
-                String timeCurrent = new SimpleDateFormat("hh:mm a", Locale.getDefault()).format(new Date());
-                String dateCurrent = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
+                //String timeCurrent = new SimpleDateFormat("hh:mm a", Locale.getDefault()).format(new Date());
+                //String dateCurrent = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
 
                 Calendar c = Calendar.getInstance();
                 int mYear = c.get(Calendar.YEAR);

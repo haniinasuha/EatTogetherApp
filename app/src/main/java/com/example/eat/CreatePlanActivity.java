@@ -22,12 +22,14 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class CreatePlanActivity extends AppCompatActivity {
     private static final String TAG = "CreatePlan";
     private PlanViewModel viewModel;
     BottomNavigationView navBar;
+    ArrayList<String> participants;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,7 +109,9 @@ public class CreatePlanActivity extends AppCompatActivity {
     public void passData(String description, String mealType, String dateStr, String timeStr, int spots, String loc) {
 
         String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        Plan plan = new Plan(description, spots, mealType, loc ,dateStr, timeStr);
+        participants = new ArrayList<>();
+        participants.add(userID);
+        Plan plan = new Plan(description, spots, mealType, loc ,dateStr, timeStr, participants);
         plan.setUserID(userID);
         viewModel.addPlan(plan);
 

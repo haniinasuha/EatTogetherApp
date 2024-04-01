@@ -26,8 +26,9 @@ import java.util.ArrayList;
 public class UpcomingPlanFragment extends Fragment {
 
     RecyclerView recyclerView;
-    RecyclerViewAdapter adapter;
+    Plan_RecyclerViewAdapter adapter;
     ArrayList<Plan> list;
+    ArrayList<String> participant;
     PlanViewModel planViewModel;
 
     @Override
@@ -40,7 +41,7 @@ public class UpcomingPlanFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
         list = new ArrayList<>();
-        adapter = new RecyclerViewAdapter(this.getContext(), list);
+        adapter = new Plan_RecyclerViewAdapter(this.getContext(), list);
         recyclerView.setAdapter(adapter);
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Plans");
@@ -53,10 +54,10 @@ public class UpcomingPlanFragment extends Fragment {
 
                     String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
                     Plan plan = dataSnapshot.getValue(Plan.class);
+                    participant = plan.getMembers();
 
-                    if (plan.getUserID().equals(userID)) {
+                    if (participant.contains(userID)) {
                         list.add(plan);
-
                     }
                     adapter.notifyDataSetChanged();
                 }

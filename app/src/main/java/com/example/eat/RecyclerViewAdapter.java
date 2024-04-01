@@ -62,7 +62,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             }
         });
 
-        holder.date.setText("Spots: " + plan.getSpots());
+        holder.spots.setText("Spots: " + plan.getSpots());
         holder.desc.setText(plan.getDescription());
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
@@ -91,14 +91,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public static class AdapterViewHolder extends RecyclerView.ViewHolder {
 
         CardView cardView;
-        TextView name, desc, date, spots;
+        TextView name, desc, spots;
 
         public AdapterViewHolder(@NonNull View itemView) {
             super(itemView);
 
             cardView = itemView.findViewById(R.id.cardView);
             name = itemView.findViewById(R.id.txt_displayName);
-            date = itemView.findViewById(R.id.txt_displayDate);
+            spots = itemView.findViewById(R.id.txt_displaySpot);
             desc = itemView.findViewById(R.id.txt_displayDesc);
         }
     }

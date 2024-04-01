@@ -35,6 +35,7 @@ public class DinnerFragment extends Fragment {
     RecyclerView recyclerView;
     RecyclerViewAdapter adapter;
     ArrayList<Plan> list;
+    ArrayList<String> participant;
     PlanViewModel planViewModel;
 
     @Override
@@ -61,6 +62,7 @@ public class DinnerFragment extends Fragment {
 
                     String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
                     Plan plan = dataSnapshot.getValue(Plan.class);
+                    participant = plan.getMembers();
 
                     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
                     String userDate = plan.getDate();
@@ -74,7 +76,7 @@ public class DinnerFragment extends Fragment {
                     }
 
                     if(dateUser.after(currentDate)) {
-                        if (plan.getMealType().equals("Dinner") && !(plan.getUserID().equals(userID)) && (plan.getSpots() > 0)) {
+                        if (plan.getMealType().equals("Dinner") && !(plan.getUserID().equals(userID)) && (plan.getSpots() > 0)&& !(participant.contains(userID))) {
                             list.add(plan);
                         }
                     }else {

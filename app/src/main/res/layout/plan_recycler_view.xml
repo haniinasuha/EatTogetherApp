@@ -24,7 +24,7 @@
             android:layout_height="96dp"
             android:layout_gravity="center"
             android:layout_marginStart="10dp"
-            android:src="@drawable/ic_account"/>
+            android:src="@drawable/ic_account" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,12 +32,37 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/txt_displayName"
+                android:id="@+id/txt_displayMeal"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:text="Name"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/txt_displayDate"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginStart="20dp"
+                android:text="Date"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/txt_displayTime"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginStart="20dp"
+                android:text="Time"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/txt_displayLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginStart="20dp"
+                android:text="Location"
                 tools:ignore="HardcodedText" />
 
             <TextView
@@ -49,11 +74,21 @@
                 tools:ignore="HardcodedText" />
 
             <TextView
+                android:id="@+id/txt_displayMembers"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:text="Participants: "
+                tools:ignore="HardcodedText" />
+
+            <TextView
                 android:id="@+id/txt_displayDesc"
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
+                android:layout_height="20dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:text="Desc"
                 tools:ignore="HardcodedText" />
 

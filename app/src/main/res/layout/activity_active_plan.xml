@@ -97,7 +97,7 @@
                 android:id="@+id/fragment_activePlan"
                 android:name="com.example.eat.BreakfastFragment"
                 android:layout_width="match_parent"
-                android:layout_height="450dp"
+                android:layout_height="465dp"
                 tools:layout="@layout/fragment_breakfast" />
         </LinearLayout>
 

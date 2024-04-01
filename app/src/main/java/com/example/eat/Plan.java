@@ -13,13 +13,15 @@ public class Plan implements Serializable {
     private String location;
     private String time; //format 00:00
     private String Id;
+
+    private ArrayList<String> members;
     private ArrayList<UserAccounts> participants;
 
     public Plan() {
         // Default constructor required for Firebase serialization
     }
 
-    public Plan(String desc, int spots, String mealType, String location, String date, String time)
+    public Plan(String desc, int spots, String mealType, String location, String date, String time, ArrayList<String> members)
     {
         this.description = desc;
         this.spots = spots;
@@ -27,7 +29,7 @@ public class Plan implements Serializable {
         this.location = location;
         this.date = date;
         this.time = time;
-        this.participants = new ArrayList<UserAccounts>();
+        this.members = members;
     }
     public String getUserID() { return userID;}
     public void setUserID(String userID) {this.userID=userID;}
@@ -67,6 +69,14 @@ public class Plan implements Serializable {
     public void setLocation(String loc) {location = loc;}
     public String getId() {return Id;}
     public void setId(String id) {this.Id = id;}
+
+    public void setMembers(ArrayList<String> members) {
+        this.members = members;
+    }
+
+    public ArrayList<String> getMembers() {
+        return members;
+    }
     public ArrayList<UserAccounts> getParticipants(){return this.participants;}
 
     public void setParticipants(ArrayList<UserAccounts> participants) {
