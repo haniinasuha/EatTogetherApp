@@ -74,7 +74,7 @@ public class YourPlanFragment extends Fragment {
                     }
 
                     if(dateUser.after(currentDate)) {
-                        if (!(plan.getUserID().equals(userID))) {
+                        if ((plan.getUserID().equals(userID))) {
                             list.add(plan);
                         }
                     } else {
