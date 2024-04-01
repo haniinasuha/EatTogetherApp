@@ -18,7 +18,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 public class PlanDetailsActivity extends AppCompatActivity {
-    TextView desc, mealType, date, time, spot, location, plan;
+    TextView desc, mealType, date, time, spot, location;
     Button btnJoin;
     String id;
     PlanViewModel planViewModel;

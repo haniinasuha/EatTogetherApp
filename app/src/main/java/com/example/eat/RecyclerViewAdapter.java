@@ -18,8 +18,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -42,25 +45,29 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(@NonNull AdapterViewHolder holder, int position) {
 
-        FirebaseDatabase db;
-        DatabaseReference refUsers;
-
         Plan plan = list.get(position);
         String userId = plan.getUserID();
-        holder.name.setText(userId);
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Users").child(userId);
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                UserAccounts user = snapshot.getValue(UserAccounts.class);
+                String name = user.getFirstName() + " " + user.getLastName();
+                holder.name.setText(name);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         holder.date.setText("Spots: " + plan.getSpots());
         holder.desc.setText(plan.getDescription());
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //AppCompatActivity activity = (AppCompatActivity) v.getContext();
-                //JoinPlanFragment joinPlanFragment = new JoinPlanFragment();
-                //Bundle bundle = new Bundle();
-                //bundle.putString("desc", plan.getDescription());
-                //joinPlanFragment.setArguments(bundle);
-                //activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_details, joinPlanFragment).addToBackStack(null).commit();
-
                 Intent intent = new Intent(v.getContext(), PlanDetailsActivity.class);
                 intent.putExtra("Id", plan.getId());
                 intent.putExtra("mealType", plan.getMealType());

@@ -7,6 +7,10 @@ public class UserAccounts {
     public UserAccounts() {
     }
 
+    public UserAccounts(String userID) {
+        this.userID = userID;
+    }
+
     public UserAccounts(String userID, String firstName, String lastName, String email, String password) {
         this.userID = userID;
         this.firstName = firstName;
