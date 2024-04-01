@@ -26,13 +26,12 @@ public class ProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
         viewModel = new ViewModelProvider(this).get(UserAccViewModel.class); // Initialize with UserViewModel
-        viewModel.loadUsers();
 
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
 
         username = view.findViewById(R.id.txtView_username);
-        UserAccounts userView = viewModel.getUser(user.getEmail());
+        UserAccounts userView = viewModel.getUser(user.getUid());
         //username.setText(userView.getFirstName() + " " + userView.getLastName());
 
         email = view.findViewById(R.id.txtView_email);

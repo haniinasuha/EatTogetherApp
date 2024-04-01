@@ -17,6 +17,7 @@ import java.util.List;
 
 public class UserAccViewModel extends ViewModel {
     private MutableLiveData<List<UserAccounts>> users;
+    private UserAccounts user;
     private FirebaseDatabase db;
     private DatabaseReference refUsers;
 
@@ -25,40 +26,29 @@ public class UserAccViewModel extends ViewModel {
         db = FirebaseDatabase.getInstance();
         refUsers = db.getReference().child("Users");
         users = new MutableLiveData<>();
-        loadUsers();
     }
 
-    public void loadUsers()
+
+    public void setUser(String userID)
     {
-        refUsers.addValueEventListener(new ValueEventListener() {
+        DatabaseReference currentUserRef = refUsers.child(userID);
+        currentUserRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                List<UserAccounts> userList = new ArrayList<>();
-                for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
-                    UserAccounts user = userSnapshot.getValue(UserAccounts.class);
-                    userList.add(user);
-                }
-                users.setValue(userList);
-                Log.d("UserAccViewModel", "IN USERS: " + users.getValue().toString());
+                user = dataSnapshot.getValue(UserAccounts.class);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.e("UserAccViewModel", "Failed to load users: " + databaseError.getMessage());
+                // Handle any errors that occur during the data retrieval process
+                Log.e("User retrieval", "Failed to retrieve user: " + databaseError.getMessage());
             }
         });
     }
 
-    public UserAccounts getUser(String email)
+    public UserAccounts getUser(String userID)
     {
-        List<UserAccounts> userList = users.getValue();
-        if (userList != null) {
-            for (UserAccounts user : userList) {
-                if (user.getEmail().equals(email)) {
-                    return user;
-                }
-            }
-        }
-        return null;
+        setUser(userID);
+        return user;
     }
 }
