@@ -56,6 +56,8 @@ public class CreatePlanActivity extends AppCompatActivity {
                     finish();
                     return true;
                 } else if (item_id == R.id.profile) {
+                    Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+                    startActivity(intent);
                     finish();
                     return true;
                 } else if (item_id == R.id.plan) {
@@ -130,7 +132,7 @@ public class CreatePlanActivity extends AppCompatActivity {
         Fragment fragmentPlanDetails = new PlanDetailsFragment();
         fragmentPlanDetails.setArguments(bundle);
 
-        this.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_createPlan, fragmentPlanDetails).addToBackStack("name").commit();
+        this.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_createPlan, fragmentPlanDetails).addToBackStack("").commit();
     }
 
 }

@@ -210,22 +210,13 @@ public class PlanViewModel extends ViewModel {
     public Plan getPlan(String PlanId)
     {
         List<Plan> planList = plans.getValue();
+        assert planList != null;
         for (Plan p : planList){
             if(p.getId().equals(PlanId)) return p;
         }
         Log.d("PlanViewModel","Couldnt find plan");
         return null;
     }
-
-    public void addParticipant(String planID, UserAccounts participant){
-        DatabaseReference planRef = refPlans.child(planID);
-        Plan plan = getPlan(planID);
-        ArrayList<UserAccounts> participants = plan.getParticipants();
-        participants.add(participant);
-        plan.setParticipants(participants);
-    }
-
-
 
 }
 

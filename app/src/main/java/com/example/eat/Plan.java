@@ -15,7 +15,6 @@ public class Plan implements Serializable {
     private String Id;
 
     private ArrayList<String> members;
-    private ArrayList<UserAccounts> participants;
 
     public Plan() {
         // Default constructor required for Firebase serialization
@@ -77,9 +76,5 @@ public class Plan implements Serializable {
     public ArrayList<String> getMembers() {
         return members;
     }
-    public ArrayList<UserAccounts> getParticipants(){return this.participants;}
 
-    public void setParticipants(ArrayList<UserAccounts> participants) {
-        this.participants = participants;
-    }
 }

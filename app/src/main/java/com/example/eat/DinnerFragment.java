@@ -58,13 +58,13 @@ public class DinnerFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    String dateCurrent = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
+                    String dateCurrent = new SimpleDateFormat("MM/dd/yyyy", Locale.getDefault()).format(new Date());
 
                     String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
                     Plan plan = dataSnapshot.getValue(Plan.class);
                     participant = plan.getMembers();
 
-                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                    SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
                     String userDate = plan.getDate();
                     Date dateUser = null;
                     Date currentDate = null;

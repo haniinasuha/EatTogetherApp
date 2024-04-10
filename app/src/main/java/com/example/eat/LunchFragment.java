@@ -60,10 +60,11 @@ public class LunchFragment extends Fragment {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     //Calendar today = Calendar.getInstance();
                     //Date currentDate = today.getTime();
-                    String dateCurrent = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
+                    String dateCurrent = new SimpleDateFormat("MM/dd/yyyy", Locale.getDefault()).format(new Date());
 
                     String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
                     Plan plan = dataSnapshot.getValue(Plan.class);
+                    assert plan != null;
                     participant = plan.getMembers();
 
                     SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
