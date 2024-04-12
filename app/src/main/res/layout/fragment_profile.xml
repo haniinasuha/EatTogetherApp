@@ -7,17 +7,17 @@
     tools:context=".ProfileFragment">
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="85dp"
-        android:layout_height="96dp"
+        android:id="@+id/img_profile"
+        android:layout_width="162dp"
+        android:layout_height="144dp"
         android:layout_gravity="center"
-        tools:src="@drawable/ic_account"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.124" />
+        app:layout_constraintVertical_bias="0.124"
+        android:src="@drawable/ic_account" />
 
     <TextView
         android:id="@+id/txtView_username"
@@ -48,14 +48,4 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.522" />
 
-    <Button
-        android:id="@+id/btn_camera"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Change profile picture"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.084" />
 </androidx.constraintlayout.widget.ConstraintLayout>

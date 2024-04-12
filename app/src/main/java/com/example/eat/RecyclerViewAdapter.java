@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -30,6 +31,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     Context context;
     ArrayList<Plan> list;
+    String userId;
+    ProfilePictures pfpManager;
     public RecyclerViewAdapter(Context context, ArrayList<Plan> list) {
         this.context = context;
         this.list = list;
@@ -46,7 +49,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(@NonNull AdapterViewHolder holder, int position) {
 
         Plan plan = list.get(position);
-        String userId = plan.getUserID();
+        userId = plan.getUserID();
+        pfpManager = new ProfilePictures(userId);
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Users").child(userId);
         reference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -64,6 +68,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         holder.spots.setText("Spots: " + plan.getSpots());
         holder.desc.setText(plan.getDescription());
+        pfpManager.loadProfilePicture(holder.profile_pic, context);
+
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,6 +99,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         CardView cardView;
         TextView name, desc, spots;
 
+        ImageView profile_pic;
+
         public AdapterViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -100,6 +108,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             name = itemView.findViewById(R.id.txt_displayName);
             spots = itemView.findViewById(R.id.txt_displaySpot);
             desc = itemView.findViewById(R.id.txt_displayDesc);
+            profile_pic = itemView.findViewById(R.id.recycler_profile);
         }
     }
 }
