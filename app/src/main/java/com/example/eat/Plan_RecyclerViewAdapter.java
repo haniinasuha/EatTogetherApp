@@ -2,7 +2,6 @@ package com.example.eat;
 
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,6 +24,7 @@ public class Plan_RecyclerViewAdapter extends RecyclerView.Adapter<Plan_Recycler
 
     Context context;
     ArrayList<Plan> list;
+    ProfilePictures pfpManager;
     public Plan_RecyclerViewAdapter(Context context, ArrayList<Plan> list) {
         this.context = context;
         this.list = list;
@@ -42,6 +41,7 @@ public class Plan_RecyclerViewAdapter extends RecyclerView.Adapter<Plan_Recycler
     public void onBindViewHolder(@NonNull AdapterViewHolder holder, int position) {
 
         String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        pfpManager = new ProfilePictures(userID);
 
         Plan plan = list.get(position);
         holder.meal.setText(plan.getMealType());
@@ -51,10 +51,10 @@ public class Plan_RecyclerViewAdapter extends RecyclerView.Adapter<Plan_Recycler
         holder.time.setText("Time: " + plan.getTime());
         holder.location.setText(plan.getLocation());
         holder.member.setVisibility(View.GONE);
-        holder.img.setVisibility(View.VISIBLE);
+        holder.profile_pic.setVisibility(View.VISIBLE);
 
         if (plan.getUserID().equals(userID)) {
-            holder.img.setVisibility(View.GONE);
+            holder.profile_pic.setVisibility(View.GONE);
             holder.member.setVisibility(View.VISIBLE);
             holder.desc.setText("-");
 
@@ -77,6 +77,7 @@ public class Plan_RecyclerViewAdapter extends RecyclerView.Adapter<Plan_Recycler
                 });
             }
         }
+        pfpManager.loadProfilePicture(holder.profile_pic, context);
     }
 
     @Override
@@ -86,18 +87,18 @@ public class Plan_RecyclerViewAdapter extends RecyclerView.Adapter<Plan_Recycler
 
     public static class AdapterViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView img;
         TextView desc, spots, date, time, meal, location, member;
+        ImageView profile_pic;
 
         public AdapterViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            img = itemView.findViewById(R.id.imageView);
             spots = itemView.findViewById(R.id.txt_displaySpot);
             desc = itemView.findViewById(R.id.txt_displayDesc);
             date = itemView.findViewById(R.id.txt_displayDate);
             time = itemView.findViewById(R.id.txt_displayTime);
             meal = itemView.findViewById(R.id.txt_displayMeal);
+            profile_pic = itemView.findViewById(R.id.img_profile2);
             location = itemView.findViewById(R.id.txt_displayLocation);
             member = itemView.findViewById(R.id.txt_displayMembers);
         }
