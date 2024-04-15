@@ -46,11 +46,14 @@ public class ProfileFragment extends Fragment {
     ImageView profilepic;
     Uri selectedImageUri;
     ProfilePictures pfpManager;
+    FirebaseStorage storage;
+    StorageReference storageRef;
     ActivityResultLauncher<Intent> imagePickLauncher;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
 
@@ -58,6 +61,8 @@ public class ProfileFragment extends Fragment {
         user = auth.getCurrentUser();
 
         pfpManager = new ProfilePictures(user.getUid());
+        storage = FirebaseStorage.getInstance();
+        storageRef = storage.getReference().child("Profile_pictures").child(user.getUid());
 
         username = view.findViewById(R.id.txtView_username);
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Users").child(user.getUid());
@@ -86,19 +91,29 @@ public class ProfileFragment extends Fragment {
                         Intent data = result.getData();
                         if(data != null && data.getData() != null){
                             selectedImageUri = data.getData();
-                            pfpManager.uploadImageToFirebase(selectedImageUri);
+                            uploadImageToFirebase(selectedImageUri);
                         }
                     }
                 }
                 );
         profilepic = view.findViewById(R.id.img_profile);
+        profilepic.setOnClickListener((v)->{
+            ImagePicker.with(this).cropSquare().compress(512).maxResultSize(512,512)
+                    .createIntent(new Function1<Intent, Unit>() {
+                        @Override
+                        public Unit invoke(Intent intent) {
+                            imagePickLauncher.launch(intent);
+                            return null;
+                        }
+                    });
+        });
 
-        pfpManager.loadProfilePicture(profilepic, requireContext());
+        loadProfilePicture();
 
         return view;
     }
 
-/*    private void uploadImageToFirebase(Uri imageUri) {
+    private void uploadImageToFirebase(Uri imageUri) {
         if (imageUri != null) {
             storageRef.putFile(imageUri).addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
@@ -122,6 +137,6 @@ public class ProfileFragment extends Fragment {
             // Handle any errors
             Log.e("Profile", "Failed to load profile picture", exception);
         });
-    }*/
+    }
 
 }
