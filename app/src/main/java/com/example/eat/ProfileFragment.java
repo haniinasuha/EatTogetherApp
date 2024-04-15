@@ -8,8 +8,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModel;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -25,7 +23,6 @@ public class ProfileFragment extends Fragment {
     FirebaseAuth auth;
     FirebaseUser user;
 
-    UserAccViewModel viewModel;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -41,6 +38,7 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 UserAccounts user = snapshot.getValue(UserAccounts.class);
+                assert user != null;
                 String name = user.getFirstName() + " " + user.getLastName();
                 username.setText(name);
             }

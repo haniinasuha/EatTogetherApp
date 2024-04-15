@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -54,6 +53,7 @@ public class YourPlanFragment extends Fragment {
                     String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
                     Plan plan = dataSnapshot.getValue(Plan.class);
 
+                    assert plan != null;
                     if (plan.getUserID().equals(userID)) {
                         list.add(plan);
 

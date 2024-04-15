@@ -51,6 +51,7 @@ public class Plan_RecyclerViewAdapter extends RecyclerView.Adapter<Plan_Recycler
         holder.time.setText("Time: " + plan.getTime());
         holder.location.setText(plan.getLocation());
         holder.member.setVisibility(View.GONE);
+        holder.img.setVisibility(View.VISIBLE);
 
         if (plan.getUserID().equals(userID)) {
             holder.img.setVisibility(View.GONE);

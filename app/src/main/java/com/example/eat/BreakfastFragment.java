@@ -20,7 +20,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.lang.reflect.Array;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -55,18 +54,17 @@ public class BreakfastFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    //Calendar today = Calendar.getInstance();
-                    //Date currentDate = today.getTime();
                     String dateCurrent = new SimpleDateFormat("MM/dd/yyyy", Locale.getDefault()).format(new Date());
 
                     String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
                     Plan plan = dataSnapshot.getValue(Plan.class);
+                    assert plan != null;
                     participant = plan.getMembers();
 
-                    SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+                    @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
                     String userDate = plan.getDate();
-                    Date dateUser = null;
-                    Date currentDate = null;
+                    Date dateUser;
+                    Date currentDate;
                     try {
                         dateUser = sdf.parse(userDate);
                         currentDate = sdf.parse(dateCurrent);
@@ -74,6 +72,7 @@ public class BreakfastFragment extends Fragment {
                         throw new RuntimeException(e);
                     }
 
+                    assert dateUser != null;
                     if(dateUser.after(currentDate)) {
                         if (plan.getMealType().equals("Breakfast") && !(plan.getUserID().equals(userID)) && (plan.getSpots() > 0) && !(participant.contains(userID))) {
                             list.add(plan);

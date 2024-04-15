@@ -12,8 +12,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.google.firebase.database.DatabaseReference;
-
 public class PlanDetailsFragment extends Fragment {
 
     TextView desc, mealType, date, time, spot, location;
