@@ -18,7 +18,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.DataSnapshot;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -94,5 +93,12 @@ public class RegisterActivity extends AppCompatActivity {
 
             }
         });
+    }
+    public Task<AuthResult> registerUser(String email, String password) {
+        return mAuth.createUserWithEmailAndPassword(email, password);
+    }
+
+    public Task<AuthResult> loginUser(String email, String password) {
+        return mAuth.signInWithEmailAndPassword(email, password);
     }
 }
