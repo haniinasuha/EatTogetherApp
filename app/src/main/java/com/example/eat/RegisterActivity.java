@@ -94,4 +94,11 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
     }
+    public Task<AuthResult> registerUser(String email, String password) {
+        return mAuth.createUserWithEmailAndPassword(email, password);
+    }
+
+    public Task<AuthResult> loginUser(String email, String password) {
+        return mAuth.signInWithEmailAndPassword(email, password);
+    }
 }
