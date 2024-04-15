@@ -21,12 +21,11 @@ import java.util.List;
 
 public class PlanViewModel extends ViewModel {
     private MutableLiveData<List<Plan>> plans;
-    private FirebaseDatabase db;
-    private DatabaseReference refPlans;
+    private final DatabaseReference refPlans;
 
     public PlanViewModel()
     {
-        db = FirebaseDatabase.getInstance();
+        FirebaseDatabase db = FirebaseDatabase.getInstance();
         refPlans = db.getReference().child("Plans");
         plans = new MutableLiveData<>();
         loadPlans();
@@ -110,112 +109,6 @@ public class PlanViewModel extends ViewModel {
                         Log.e("PlanViewModel", "Error updating spots", e);
                     }
                 });
-    }
-
-    public void updateTime(String planId, String newTime) {
-        DatabaseReference planRef = refPlans.child(planId);
-        planRef.child("time").setValue(newTime)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        // Spots update successful
-                        Log.d("PlanViewModel", "Time updated successfully");
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        // Failed to update spots
-                        Log.e("PlanViewModel", "Error updating time", e);
-                    }
-                });
-    }
-
-    public void updateDate(String planId, String newDate) {
-        DatabaseReference planRef = refPlans.child(planId);
-        planRef.child("date").setValue(newDate)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        // Spots update successful
-                        Log.d("PlanViewModel", "Date updated successfully");
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        // Failed to update spots
-                        Log.e("PlanViewModel", "Error updating date", e);
-                    }
-                });
-    }
-
-    public void updateLocation(String planId, String newLoc) {
-        DatabaseReference planRef = refPlans.child(planId);
-        planRef.child("location").setValue(newLoc)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        // Spots update successful
-                        Log.d("PlanViewModel", "Location updated successfully");
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        // Failed to update spots
-                        Log.e("PlanViewModel", "Error updating location", e);
-                    }
-                });
-    }
-
-    public void updateDescription(String planId, String newDesc) {
-        DatabaseReference planRef = refPlans.child(planId);
-        planRef.child("description").setValue(newDesc)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        // Spots update successful
-                        Log.d("PlanViewModel", "Description updated successfully");
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        // Failed to update spots
-                        Log.e("PlanViewModel", "Error updating description", e);
-                    }
-                });
-    }
-
-    public void updateMealType(String planId, String mealType) {
-        DatabaseReference planRef = refPlans.child(planId);
-        planRef.child("mealType").setValue(mealType)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        // Spots update successful
-                        Log.d("PlanViewModel", "Meal updated successfully");
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        // Failed to update spots
-                        Log.e("PlanViewModel", "Error updating meal", e);
-                    }
-                });
-    }
-
-    public Plan getPlan(String PlanId)
-    {
-        List<Plan> planList = plans.getValue();
-        assert planList != null;
-        for (Plan p : planList){
-            if(p.getId().equals(PlanId)) return p;
-        }
-        Log.d("PlanViewModel","Couldnt find plan");
-        return null;
     }
 
 }

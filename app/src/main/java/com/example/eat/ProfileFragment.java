@@ -70,6 +70,7 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 UserAccounts user = snapshot.getValue(UserAccounts.class);
+                assert user != null;
                 String name = user.getFirstName() + " " + user.getLastName();
                 username.setText(name);
             }

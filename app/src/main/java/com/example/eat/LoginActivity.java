@@ -25,7 +25,6 @@ public class LoginActivity extends AppCompatActivity {
     Button btnLogin;
     FirebaseAuth mAuth;
     TextView txtRegister;
-    DatabaseReference reference;
 
     @Override
     public void onStart() {

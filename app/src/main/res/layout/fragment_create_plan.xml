@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".CreatePlanFragment">
 
     <LinearLayout
@@ -61,11 +62,31 @@
             android:textSize="16sp"
             android:textStyle="bold" />
 
-        <Spinner
-            android:id="@+id/spinner_loc"
-            android:layout_width="200dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="20dp" />
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:cardCornerRadius="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="20dp" android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            app:cardBackgroundColor="@color/white" >
+
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/search_bar"
+                android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            </androidx.fragment.app.FragmentContainerView>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            tools:context="com.example.eat.CreatePlanActivity" />
 
         <LinearLayout
             android:layout_width="wrap_content"
