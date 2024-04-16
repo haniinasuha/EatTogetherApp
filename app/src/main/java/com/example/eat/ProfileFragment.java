@@ -3,6 +3,7 @@ package com.example.eat;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -13,10 +14,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.Manifest;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
@@ -49,6 +53,8 @@ public class ProfileFragment extends Fragment {
     FirebaseStorage storage;
     StorageReference storageRef;
     ActivityResultLauncher<Intent> imagePickLauncher;
+    private static final int PERMISSION_REQUEST_CAMERA = 1;
+    private static final int PERMISSION_REQUEST_STORAGE = 2;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -98,15 +104,8 @@ public class ProfileFragment extends Fragment {
                 }
                 );
         profilepic = view.findViewById(R.id.img_profile);
-        profilepic.setOnClickListener((v)->{
-            ImagePicker.with(this).cropSquare().compress(512).maxResultSize(512,512)
-                    .createIntent(new Function1<Intent, Unit>() {
-                        @Override
-                        public Unit invoke(Intent intent) {
-                            imagePickLauncher.launch(intent);
-                            return null;
-                        }
-                    });
+        profilepic.setOnClickListener(v -> {
+            checkStoragePermission();
         });
 
         loadProfilePicture();
@@ -139,5 +138,58 @@ public class ProfileFragment extends Fragment {
             Log.e("Profile", "Failed to load profile picture", exception);
         });
     }
+
+    private void checkStoragePermission() {
+        boolean camera, storage;
+        camera = true;
+        storage = true;
+        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.READ_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                    PERMISSION_REQUEST_STORAGE);
+            camera = false;
+        }
+        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.CAMERA},
+                    PERMISSION_REQUEST_CAMERA);
+            storage = false;
+        }
+        if(camera && storage){
+            openImagePicker();
+        }
+    }
+
+    private void openImagePicker() {
+        ImagePicker.with(this).cropSquare().compress(512).maxResultSize(512,512)
+                .createIntent(intent -> {
+                    imagePickLauncher.launch(intent);
+                    return null;
+                });
+    }
+
+/*    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode == PERMISSION_REQUEST_STORAGE) {
+            // Check if the permission is granted
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Permission is granted, open image picker
+                openImagePicker();
+            } else {
+                // Permission is denied, show a message or handle accordingly
+                Toast.makeText(requireContext(), "Storage permission is required to select an image", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+    }*/
+
+/*    private void checkCameraPermission() {
+        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED) {
+            // Permission is not granted, request it
+            requestPermissions(new String[]{Manifest.permission.CAMERA},
+                    PERMISSION_REQUEST_CAMERA);
+        }
+    }*/
 
 }
