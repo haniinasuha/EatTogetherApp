@@ -24,6 +24,7 @@ public class Plan_RecyclerViewAdapter extends RecyclerView.Adapter<Plan_Recycler
 
     Context context;
     ArrayList<Plan> list;
+    String plan_userId;
     ProfilePictures pfpManager;
     public Plan_RecyclerViewAdapter(Context context, ArrayList<Plan> list) {
         this.context = context;
@@ -41,9 +42,11 @@ public class Plan_RecyclerViewAdapter extends RecyclerView.Adapter<Plan_Recycler
     public void onBindViewHolder(@NonNull AdapterViewHolder holder, int position) {
 
         String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        pfpManager = new ProfilePictures(userID);
 
         Plan plan = list.get(position);
+        plan_userId = plan.getUserID();
+        pfpManager = new ProfilePictures(plan_userId);
+
         holder.meal.setText(plan.getMealType());
         holder.spots.setText("Spots: " + plan.getSpots());
         holder.desc.setText(plan.getDescription());
